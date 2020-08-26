@@ -1,0 +1,123 @@
+ion-title {
+  font-weight: 400;
+  letter-spacing: 0.4px;
+}
+.align-center {
+  text-align: center;
+}
+.dispplay-content-center {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+}
+.auth-logo {
+  width: 300px;
+ }
+
+.auth-form {
+  width:100%;
+   max-width: 400px;
+}
+.padding20 {
+  padding:20px!important;
+}
+.home-slider-description {
+  max-width: 700px;
+  color: #3a876f;
+   padding: 0 50px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+.add-new{
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+}
+.item-inner{
+  border-bottom: 0 !important;
+}
+.custom-list-p{
+  font-size: 12px;
+}
+.action-sheet-group.sc-ion-action-sheet-md:first-child {
+  margin: 10px;
+  padding-top: 0;
+  margin-bottom: 10px;
+  text-align: center !important;
+  justify-content: center;
+  border-radius: 10px;
+
+}
+.action-sheet-group.sc-ion-action-sheet-md:last-child {
+  padding-bottom: 0;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+
+.item-native{ 
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  span.action-sheet-button-inner.sc-ion-action-sheet-md {
+    text-align: center !important;
+    color: #598068;
+    display: block;
+    padding: 15px;
+}
+
+
+
+.flex{
+  flex:1;
+}
+.list-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: white;margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.list-item-checkbox{
+  flex:1;
+  max-width: 50px;
+}
+
+
+.list-item-option{
+    float: right;
+    color: #378174;
+    font-size: 28px;
+
+}
+
+.text-align-right{
+  text-align: right;
+}
+
+.text-align-left{
+  text-align: left;
+}
+
+.padding-5px{
+  padding:5px;
+}
+.DRAFT {
+   color: #00afff !important;
+}
+.SENT {
+  color: #ff0062 !important;
+}
+@media screen and (min-width: 640px) {
+  .custom-list-p{
+    font-size: 20px;
+  }
+}

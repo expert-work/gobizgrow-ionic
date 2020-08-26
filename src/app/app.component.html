@@ -1,0 +1,100 @@
+<ion-app dir="{{textDir}}">
+  <ion-split-pane contentId="menu-content" when="false">
+  <!-- when=false means that the split pane will never expand automatically -->
+  <!-- For more info check https://ionicframework.com/docs/api/split-pane -->
+    <!-- our side menu  -->
+    <ion-menu contentId="menu-content" class="app-sidemenu">
+      <ion-header>
+        <ion-item>
+          <ion-img style="width: 24px;" slot="start" [src]="'./assets/logo/icon.png'" [alt]="'GoBizGrow'"></ion-img>
+
+         <ion-label>
+           {{displayUserData?.name}}
+         </ion-label>
+       </ion-item>
+      </ion-header>
+      <ion-content>
+        
+        <ion-list>
+           
+          <ion-menu-toggle autoHide="false">
+            <ion-item [routerLink]="['/app/dashboard']">
+              <ion-icon slot="start" name="home"></ion-icon>
+              <ion-label>
+                Dashboard
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/customers']">
+              <ion-icon slot="start" name="people"></ion-icon>
+              <ion-label>
+                Customers
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/invoices']">
+              <ion-icon slot="start" name="document"></ion-icon>
+              <ion-label>
+                Invoice
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/estimates']">
+              <ion-icon slot="start" name="document-text"></ion-icon>
+              <ion-label>
+                Estimate
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/items']">
+              <ion-icon slot="start" name="star"></ion-icon>
+              <ion-label>
+                Items
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/payments']">
+              <ion-icon slot="start" name="card"></ion-icon>
+              <ion-label>
+                Payments
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/expenses']">
+              <ion-icon slot="start" name="rocket"></ion-icon>
+              <ion-label>
+                Expenses
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/reports']">
+              <ion-icon slot="start" name="stats-chart"></ion-icon>
+              <ion-label>
+                Reports
+              </ion-label>
+            </ion-item>
+           
+            <ion-item [routerLink]="['/app/settings']">
+              <ion-icon slot="start" name="settings"></ion-icon>
+              <ion-label>
+                Setting
+              </ion-label>
+            </ion-item>
+
+            <ion-item (click)="logout()" style="cursor: pointer;">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+
+
+            
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <!-- Main app content get's rendered in this router-outlet -->
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

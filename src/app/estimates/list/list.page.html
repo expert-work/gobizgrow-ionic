@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Estimates
+    </ion-title>
+    <ion-buttons slot="end" class="button button-clear button-positive">  
+         <ion-icon name="add" class="add-new"></ion-icon>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content color="light " class="action-sheets-home-page">  
+
+    
+    <div class="search-filter-box" style="flex: 1;
+    background: white;
+    display: flex;
+    position: fixed !important;
+    width: 100%;
+    z-index: 99999999999;
+    top: 57px;
+     height: 60px;
+     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+     
+     ">
+      <div style="flex:1;padding: 15px;max-width: 50px;">
+        <ion-checkbox color="secondary" (click)="openMenu()" ></ion-checkbox>
+      </div>
+
+
+      <div style="flex:1;width: 116px;
+      margin: 8px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+">
+          <ion-select placeholder="" value="f">
+            <ion-select-option value="f">All</ion-select-option>
+            <ion-select-option value="m">Draft</ion-select-option>
+            <ion-select-option value="e">Sent</ion-select-option>
+            <ion-select-option value="es">Accepted</ion-select-option>
+            <ion-select-option value="as">Decliened</ion-select-option>
+
+
+          </ion-select>
+      </div>
+
+      <div style="flex:1">
+
+        <ion-searchbar value={{q}} (ionInput)="searchBox($event)"    style="    min-width: 200px !important;"></ion-searchbar>
+      </div>
+      
+
+   
+    </div>
+
+    
+ 
+
+    <ion-list style="background: #f4f5f8;margin-top: 60px;">  
+      <ion-item  lines="none" *ngFor="let item of items"   class="list-item">
+         
+            <div class="list-item-checkbox">
+              <ion-buttons><ion-checkbox  (click)="openMenu()" ></ion-checkbox></ion-buttons>
+            </div>
+            <div class="flex padding-5px">
+              <p class="custom-list-p" color="primary" >{{item.estimate_number}}</p>
+              <p class="custom-list-p" color="secondary" style="color:teal">{{item.customer_name}}</p>
+            </div>
+            <div class="flex padding-5px">
+              <p class="custom-list-p" color="primary" style="color:#ff0062" >{{item.due_date}}</p>
+              <p class="custom-list-p" color="secondary"  >{{item.estimate_date}} </p>
+            </div>
+            <div class="flex padding-5px">  
+              <p class="custom-list-p text-align-left {{item.status}}">{{item.status}}</p>
+              <p class="custom-list-p text-align-left" color="secondary" style="color:blue" >{{item.total_format}} </p>
+            </div>
+            <div class="flex padding-5px">
+              <ion-icon name="options" class="list-item-option" (click)="openOptionMenu()"></ion-icon>
+            </div>
+
+        
+       </ion-item>  
+    </ion-list>  
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+      <ion-infinite-scroll-content  
+        loadingSpinner="bubbles"  
+        loadingText="Loading more data...">  
+      </ion-infinite-scroll-content>  
+    </ion-infinite-scroll>  
+  </ion-content>  

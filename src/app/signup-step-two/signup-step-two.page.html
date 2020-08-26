@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Complete Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="signup-content">
+  <div  class="dispplay-content-center">
+       
+    <div class="padding20"></div>
+      <ion-img class="auth-logo" [src]="'./assets/logo/logo.png'" [alt]="'walkthrough'"></ion-img>
+      <h2>Congrats, you’re signed up!</h2>
+      <p style="margin: 0">We just need a couple more details  </p>
+      <div class="padding20"></div>
+      <form [formGroup]="signupForm2" (ngSubmit)="doSignup()" class="auth-form">
+            <ion-list class="inputs-list" lines="full">
+              <ion-item class="input-item">
+                <ion-input type="name" placeholder="Your full name" formControlName="name" clearInput autocapitalize="off"  ></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.name">
+                  <div class="error-message" *ngIf="signupForm2.get('name').hasError(validation.type) && (signupForm2.get('name').dirty || signupForm2.get('name').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+
+
+              <ion-item class="input-item">
+                <ion-input type="text" placeholder="Company Name (optional)" formControlName="company_name" clearInput autocapitalize="off"  ></ion-input>
+              </ion-item>
+               
+
+
+              <ion-item class="input-item">
+                <ion-input type="phone" placeholder="Phone Number" formControlName="phone" clearInput autocapitalize="off"  ></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.phone">
+                  <div class="error-message" *ngIf="signupForm2.get('phone').hasError(validation.type) && (signupForm2.get('phone').dirty || signupForm2.get('phone').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+
+
+
+              
+
+             
+              
+            </ion-list>
+
+            <ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm2.valid || desabled">Submit</ion-button>
+             
+          </form>
+   
+
+     
+</div>
+</ion-content>

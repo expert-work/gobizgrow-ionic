@@ -1,0 +1,25 @@
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  
+  .blink {
+ 
+     animation: blinker 2s linear infinite;
+    background-color: red;
+    margin-right: 5px;
+    border-radius: 0;
+    text-align: center !important;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    PADDING: 10PX;
+     width: 100%;
+     -webkit-animation: blinker 2s linear infinite;
+    animation: blinker 2s linear infinite;
+    
+
+  }
+  
+  

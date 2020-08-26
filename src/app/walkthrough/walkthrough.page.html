@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button class="skip-walkthrough-button" fill="clear" (click)="skipWalkthrough()">skip</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides class="walkthrough-slides" pager="true" [options]="slidesOptions" >
+    <ion-slide   style="flex-direction: column; padding-top: 70px;   background: #378175;" class="first-slide illustration-and-decoration-slide">
+         <ion-col  style="    flex: 5;display: flex;
+         align-items: center;
+         text-align: center;
+         justify-content: center;
+         background: white;
+         flex-direction: column;">
+          <ion-img class="auth-logo" [src]="'./assets/logo/logo.png'" [alt]="'walkthrough'"></ion-img>
+            
+          <p  class="home-slider-description">
+          Software made specifically for your business. Super simple to use, all the tools and information you need, all in one simple and easy to use app.
+          </p>
+          <ion-button color="primary" [routerLink]="['/auth/login']" >Get Started</ion-button>
+
+        </ion-col>
+       
+        
+        <ion-col  style="display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;">
+         <h3 class="info-title">Made for Auto Techs & Detailers.
+          Simple to use.</h3>
+        </ion-col>
+     </ion-slide>
+   
+ 
+     
+
+    <ion-slide   style="flex-direction: column; padding-top: 70px;   background: #378175;" class="last-slide illustration-and-decoration-slide">
+      <ion-col  style="    flex: 5;display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background: white;
+      flex-direction: column;">
+       <ion-img class="auth-logo" [src]="'./assets/logo/logo.png'" [alt]="'walkthrough'"></ion-img>
+         
+       <p  class="home-slider-description">
+          Tools and features made specifically to make your life easier & business thrive.
+      </p>
+       <ion-button color="primary" [routerLink]="['/auth/login']" >Get Started</ion-button>
+
+     </ion-col>
+    
+     
+     <ion-col  style="display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     justify-content: center;">
+      <h3 class="info-title">Made Specifically for Your Industry &
+        Your Size.</h3>
+     </ion-col>
+  </ion-slide>
+
+  </ion-slides>
+</ion-content>

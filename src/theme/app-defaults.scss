@@ -41,7 +41,8 @@ ion-title {
   border-bottom: 0 !important;
 }
 .custom-list-p{
-  font-size: 12px;
+  font-size: 14px;
+  font-weight:400;
 }
 .action-sheet-group.sc-ion-action-sheet-md:first-child {
   margin: 10px;
@@ -106,7 +107,9 @@ ion-title {
 .text-align-left{
   text-align: left;
 }
-
+ion-datetime {
+  font-size: 14px;
+}
 .padding-5px{
   padding:5px;
 }
@@ -116,6 +119,68 @@ ion-title {
 .SENT {
   color: #ff0062 !important;
 }
+
+.report-search-btn{
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid #378074;
+  color: #378074;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.search-filter-box.report-filter div {
+  padding: 10px 0px;
+}
+.forms{
+    width:100%;
+    padding:20px;
+}
+.search-filter-box{
+  flex: 1;
+    background: white;
+    display: flex;
+    //position: fixed !important;
+    width: 100%;
+    z-index: 99999999999;
+    //top: 57px;
+     max-height: 47px;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+
+.inputs-list {
+ 
+  .input-item {
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+  }
+
+  .error-container {
+    .error-message {
+      margin: calc(var(--page-margin) / 2) 0px;
+      display: flex;
+      align-items: center;
+      color: var(--ion-color-danger);
+      font-size: 14px;
+
+      ion-icon {
+        padding-inline-end: calc(var(--page-margin) / 2);
+      }
+    }
+  }
+}
+.img-wrapper {
+  min-height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @media screen and (min-width: 640px) {
   .custom-list-p{
     font-size: 20px;

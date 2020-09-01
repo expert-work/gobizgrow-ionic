@@ -9,6 +9,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
+<ion-content class="action-sheets-home-page">
+  <ion-list style="background: #f4f5f8;">  
+     <ion-item  lines="none"  class="list-item" [routerLink]="['/reports/sales']">
+      <p class="custom-list-p" color="primary" >Account</p>
+     </ion-item>
+     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/profit-loss']">
+      <p class="custom-list-p" color="primary" >Item/Services Categories</p>
+     </ion-item>
+     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/expenses']">
+      <p class="custom-list-p" color="primary" >Expenses Categories </p>
+     </ion-item>
+     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/expenses']">
+      <p class="custom-list-p" color="primary" >Payment Methods </p>
+     </ion-item>
+
+     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/taxes']">
+      <p class="custom-list-p" color="primary" > Taxes </p>
+     </ion-item>
+  </ion-list>
   </ion-content>

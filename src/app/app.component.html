@@ -4,15 +4,19 @@
   <!-- For more info check https://ionicframework.com/docs/api/split-pane -->
     <!-- our side menu  -->
     <ion-menu contentId="menu-content" class="app-sidemenu">
+      
       <ion-header>
-        <ion-item>
-          <ion-img style="width: 24px;" slot="start" [src]="'./assets/logo/icon.png'" [alt]="'GoBizGrow'"></ion-img>
-
-         <ion-label>
-           {{displayUserData?.name}}
-         </ion-label>
-       </ion-item>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-img style="margin-left:20px;width: 24px;"  [src]="'./assets/logo/icon.png'" [alt]="'GoBizGrow'"></ion-img>
+          </ion-buttons>
+          <ion-title>
+            {{displayUserData?.name}}
+          </ion-title>
+        </ion-toolbar>
       </ion-header>
+      
+      
       <ion-content>
         
         <ion-list>

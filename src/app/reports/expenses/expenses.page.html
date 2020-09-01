@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Expenses Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="search-filter-box">
+  <ion-toolbar >
+    <div slot="start">
+      <ion-datetime  displayFormat="MM/DD/YYYY"  value="12/12/2020"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+    </div>
+    <div>
+      <ion-datetime  displayFormat="MM/DD/YYYY"  value="12/12/2020" placeholder="Date To" display-timezone="utc"></ion-datetime>
+    </div>
+    <ion-buttons slot="end">  
+      <ion-buttons class="primary" style="color: #378174;
+      font-size: 38px;
+      float: right;
+      margin-right: 15px;"><ion-icon name="arrow-forward-circle"></ion-icon></ion-buttons> 
+    </ion-buttons>
+  </ion-toolbar>
+  </div>
+  
+<ion-content>
+      <iframe style="max-width:100%;width:100%; height: 90vh;" src="https://app.gobizgrow.com/pdf/reports/expensess?company_id=14&range=08/01/2020%20/%2008/31/2020"></iframe>
+</ion-content>

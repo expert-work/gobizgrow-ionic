@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Salses Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="search-filter-box report-filter">
+  <div class="flex">
+        <ion-select value="f">
+          <ion-select-option value="f">Customer</ion-select-option>
+          <ion-select-option value="m">Item</ion-select-option>
+        </ion-select>
+    </div>
+   <div class="flex">
+          <ion-datetime  displayFormat="MM/DD/YYYY"  value="12/12/2020"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+   </div>
+  <div class="flex">
+          <ion-datetime  displayFormat="MM/DD/YYYY"  value="12/12/2020" placeholder="Date To" display-timezone="utc"></ion-datetime>
+  </div>
+  <div class="flex"> 
+    <ion-buttons class="primary" style="color: #378174;
+    font-size: 38px;
+    float: right;
+    margin-right: 15px;"><ion-icon name="arrow-forward-circle"></ion-icon></ion-buttons> 
+  </div>
+</div>
+<ion-content>
+   <iframe style="width:100%; height: 90vh;" src="https://app.gobizgrow.com/pdf/reports/sales?company_id=14&type=item&range=07/01/2020%20/%2007/31/2020"></iframe>
+</ion-content>

@@ -1,17 +1,147 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header no-border>
+  <ion-toolbar style="--background: #f6f6f6;--border-width: 0;">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button>        
+            <ion-icon name="grid-outline"></ion-icon>
+      </ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Dashboard
-    </ion-title>
+      
+      
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class=" blink">
-   <span> You have 7 days left in your free trail! Upgrade for $20 a month!</span> <ion-button color="primary">Upgrade Now</ion-button>
+<ion-content  style="--background: #f6f6f6;">
+  <ion-grid>
+    <h3 style="font-size: 30px;
+    font-weight: 400;
+    padding-left: 20px;">Home</h3>
+    <ion-row>
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/invoices']" >
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="document"></ion-icon></div>
+          <p class="grid-heading">Invoice</p>
+          <p class="grid-description">{{Invoice}} Invoices</p>
+         </div>
+      </ion-col>
 
-  </div>
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/customers']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="people"></ion-icon></div>
+          <p class="grid-heading">Customer</p>
+          <p class="grid-description">{{Customer}} Customers</p>
+         </div>
+      </ion-col>
+
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/estimates']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="document-text"></ion-icon></div>
+          <p class="grid-heading">Estimate</p>
+          <p class="grid-description">{{Estimate}} Estimation</p>
+         </div>
+      </ion-col>
+
+      
+  
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/items']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="star"></ion-icon></div>
+          <p class="grid-heading">Item</p>
+          <p class="grid-description">{{Item}} Items</p>
+         </div>
+      </ion-col>
+
+
+  
+
+
+        
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/payments']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="card"></ion-icon></div>
+          <p class="grid-heading">Payment</p>
+          <p class="grid-description">{{Payment}} Payments</p>
+         </div>
+      </ion-col>
+
+
+        
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/expenses']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="rocket"></ion-icon></div>
+          <p class="grid-heading">Expense</p>
+          <p class="grid-description">{{Expense}} Expenses</p>
+         </div>
+      </ion-col>
+
+
+        
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/reports']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="stats-chart"></ion-icon></div>
+          <p class="grid-heading">Report</p>
+          <p class="grid-description"><br></p>
+         </div>
+      </ion-col>
+
+
+        
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/settings']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="settings"></ion-icon></div>
+          <p class="grid-heading">Setting</p>
+          <p class="grid-description"><br></p>
+         </div>
+      </ion-col>
+
+
+
+    </ion-row>
+  </ion-grid>
   </ion-content>
+
+
+  
+
+
+  <ion-footer class="ion-no-border" style="background: white;" >
+  <ion-tabs style="display: unset;position: unset;">
+    <ion-tab-bar  style="background:white;--border: 0;">
+
+      <ion-tab-button tab="/app/dashboard" class="side-tab">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+      
+       <ion-tab-button class="center-tab" style="    max-width: 80px;
+       width: 80px;
+       background: #ffffff;">
+       
+      </ion-tab-button>
+       <ion-tab-button tab="debts" class="side-tab">
+        <ion-icon name="cash-outline"></ion-icon>
+        <ion-label>Debts</ion-label>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+  
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" edge="false"  style="display: block!important;" class="center-add-button" >
+    <ion-fab-button type="button" class="custom-tab" style="margin-left: -11px;
+    font-size: 61px;
+    border-radius: 50% !important;
+    margin-top: -87px !important;
+    box-shadow: 0 0 0 11px #f6f6f6;
+    width: 80px;
+    height: 80px;">
+         <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button type="button" color="dark"><ion-icon name="list-outline"></ion-icon>></ion-fab-button>
+      <ion-fab-button type="button" color="dark"><ion-icon name="pie-chart-outline"></ion-icon></ion-fab-button>
+      <ion-fab-button type="button" color="dark"><ion-icon name="cash-outline"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-footer>
+  
+   
+ 

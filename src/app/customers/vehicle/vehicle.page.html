@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button  (click)="close()">
+         <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Vehicle</ion-title>
+    <ion-button slot="end" class="button button-clear button-positive"   style="color: white;"   [disabled]="!form.valid || desabled"  (click)="saveForm()">  
+      <ion-icon name="share"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div  class="dispplay-content-center">
+      
+  
+    <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+     <ion-list class="inputs-list" lines="full">
+       <ion-item class="input-item">
+         <ion-input type="text" placeholder="Make" formControlName="make" clearInput autocapitalize="off" ></ion-input>
+       </ion-item>
+       <div class="error-container">
+         <ng-container *ngFor="let validation of validation_messages.make">
+           <div class="error-message" *ngIf="form.get('make').hasError(validation.type) && (form.get('make').dirty || form.get('make').touched)">
+             <ion-icon name="information-circle-outline"></ion-icon>
+             <span>{{ validation.message }}</span>
+           </div>
+         </ng-container>
+       </div>
+ 
+       <ion-item class="input-item">
+         <ion-input type="text" placeholder="Model" formControlName="model" clearInput autocapitalize="off"></ion-input>
+       </ion-item>
+       <div class="error-container">
+         <ng-container *ngFor="let validation of validation_messages.model">
+           <div class="error-message" *ngIf="form.get('model').hasError(validation.type) && (form.get('model').dirty || form.get('model').touched)">
+             <ion-icon name="information-circle-outline"></ion-icon>
+             <span>{{ validation.message }}</span>
+           </div>
+         </ng-container>
+       </div>
+ 
+
+ 
+
+ 
+       <ion-item class="input-item">
+         <ion-input type="text" placeholder="Year" formControlName="year" clearInput autocapitalize="off"></ion-input>
+       </ion-item>
+       <div class="error-container">
+         <ng-container *ngFor="let validation of validation_messages.year">
+           <div class="error-message" *ngIf="form.get('year').hasError(validation.type) && (form.get('year').dirty || form.get('year').touched)">
+             <ion-icon name="information-circle-outline"></ion-icon>
+             <span>{{ validation.message }}</span>
+           </div>
+         </ng-container>
+       </div>
+ 
+       <ion-item class="input-item">
+         <ion-input type="text" placeholder="Color" formControlName="color" clearInput autocapitalize="off" ></ion-input>
+       </ion-item>
+       <ion-item class="input-item">
+         <ion-input type="text" placeholder="Mileage" formControlName="mileage" clearInput autocapitalize="off" ></ion-input>
+       </ion-item>
+       
+      
+ 
+       <ion-item class="input-item">
+         <ion-textarea type="text" placeholder="Customer Notes" formControlName="notes" clearInput autocapitalize="off" ></ion-textarea>
+       </ion-item>
+     </ion-list>
+      
+     
+ 
+     <div class="padding20"></div>
+ 
+     <ion-button class="login-btn" type="submit" expand="block"   [disabled]="!form.valid || desabled">Save Now</ion-button>
+     <div class="padding20"></div>
+   </form>
+ </div> 
+</ion-content>

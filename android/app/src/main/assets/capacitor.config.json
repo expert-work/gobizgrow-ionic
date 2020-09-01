@@ -1,0 +1,13 @@
+{
+  "appId": "com.gobiz",
+  "appName": "GoBizGrow",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+   
+  }
+}

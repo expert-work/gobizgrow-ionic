@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ListPageRoutingModule } from './list-routing.module';
+import { ComponentsModule } from '../../components/components.module';
 
 import { ListPage } from './list.page';
 
@@ -13,7 +14,8 @@ import { ListPage } from './list.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListPageRoutingModule
+    ListPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ListPage]
 })

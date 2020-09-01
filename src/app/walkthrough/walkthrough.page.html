@@ -1,14 +1,20 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button class="skip-walkthrough-button" fill="clear" (click)="skipWalkthrough()">skip</ion-button>
-    </ion-buttons>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+     </ion-buttons>
+    <ion-title>
+     </ion-title>
+  <ion-buttons slot="end" class="button button-clear ">  
+    <ion-button class="skip-walkthrough-button" fill="clear" (click)="skipWalkthrough()" style="color:white">skip</ion-button>
+ </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
   <ion-slides class="walkthrough-slides" pager="true" [options]="slidesOptions" >
-    <ion-slide   style="flex-direction: column; padding-top: 70px;   background: #378175;" class="first-slide illustration-and-decoration-slide">
+    <ion-slide   style="flex-direction: column; padding-top: 50px;   background: #378175;" class="first-slide illustration-and-decoration-slide">
          <ion-col  style="    flex: 5;display: flex;
          align-items: center;
          text-align: center;
@@ -38,7 +44,7 @@
  
      
 
-    <ion-slide   style="flex-direction: column; padding-top: 70px;   background: #378175;" class="last-slide illustration-and-decoration-slide">
+    <ion-slide   style="flex-direction: column; padding-top: 50px;   background: #378175;" class="last-slide illustration-and-decoration-slide">
       <ion-col  style="    flex: 5;display: flex;
       align-items: center;
       text-align: center;

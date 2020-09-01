@@ -19,6 +19,39 @@ const routes: Routes = [
         path: 'app',
         loadChildren: () => import('../tabs/tabs.module').then(m => m.TabsPageModule)
       },
+
+      {
+        path:'app/dashboard',
+        loadChildren: () =>
+           import('../dashboard/dashboard.module').then(
+             m => m.DashboardPageModule
+           )
+      },
+        {
+          path : 'reports/sales',
+          loadChildren : () => import('../reports/sales/sales.module').then(
+            m =>m.SalesPageModule
+          )
+        },
+        {
+           path :'reports/profit-loss',
+           loadChildren: () => import('../reports/profit-loss/profit-loss.module').then(
+             m => m.ProfitLossPageModule
+           )
+        },
+        { 
+          path :'reports/expenses',
+          loadChildren: () => import('../reports/expenses/expenses.module').then(
+            m => m.ExpensesPageModule
+          )
+        },
+        {
+         path : 'reports/taxes',
+         loadChildren : () => import('../reports/taxes/taxes.module').then(
+           m => m.TaxesPageModule
+         )
+        }
+  
       
       
     ]

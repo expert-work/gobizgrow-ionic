@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button  (click)="close()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="close" showWhen="android,windows"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Edit Customer</ion-title>
+    <ion-button slot="end" class="button button-clear button-positive"   style="color: white;"   [disabled]="!form.valid || desabled"  (click)="saveForm()">  
+      <ion-icon name="share"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+     
+
+
+ <div  class="dispplay-content-center">
+      
+  
+   <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+    <ion-list class="inputs-list" lines="full">
+      <ion-item class="input-item">
+        <ion-input type="email" placeholder="Email" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message" *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-input type="text" placeholder="Name" formControlName="name" clearInput autocapitalize="off"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validation_messages.name">
+          <div class="error-message" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item class="input-item">
+        <ion-input type="phone" placeholder="Phone" formControlName="phone" clearInput autocapitalize="off"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validation_messages.phone">
+          <div class="error-message" *ngIf="form.get('phone').hasError(validation.type) && (form.get('phone').dirty || form.get('phone').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-input type="text" placeholder="Street Address" formControlName="street_address" clearInput autocapitalize="off" ></ion-input>
+      </ion-item>
+      <ion-item class="input-item">
+        <ion-input type="text" placeholder="City" formControlName="city" clearInput autocapitalize="off" ></ion-input>
+      </ion-item>
+      
+      <ion-item class="input-item">
+        <ion-input type="text" placeholder="State" formControlName="state" clearInput autocapitalize="off" ></ion-input>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-input type="text" placeholder="Zip Code" formControlName="zip_code" clearInput autocapitalize="off" ></ion-input>
+      </ion-item>
+
+      <ion-item class="input-item">
+        <ion-textarea type="text" placeholder="Customer Notes" formControlName="customer_notes" clearInput autocapitalize="off" ></ion-textarea>
+
+      </ion-item>
+    </ion-list>
+
+    <ion-list>  
+      <ion-item  lines="none" *ngFor="let vehicle of vehicles_json_data"  style="margin: 10px 0px;border: 1px solid rgba(0, 0, 0, 0.08);">
+            <ion-label (click)="openModal(x)">
+              <h3>{{vehicle.make}} {{vehicle.model}} {{vehicle.year}}</h3>
+            </ion-label>
+            <ion-icon name="close" color="danger"  (click)="deleteVehicle(vehicle.id)" slot="end"></ion-icon>
+            <ion-icon name="create" color="success"  slot="end" (click)="editVehicleModal(vehicle)"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    
+    <ion-button slot="end" class="button button-clear button-positive" (click)="openVehicleModal()" >  
+      <ion-icon name="add"></ion-icon> Vehicle
+    </ion-button>
+    
+
+    <div class="padding20"></div>
+
+    <ion-button class="login-btn" type="submit" expand="block"   [disabled]="!form.valid || desabled">Save Now</ion-button>
+    <div class="padding20"></div>
+  </form>
+</div> 
+</ion-content> 

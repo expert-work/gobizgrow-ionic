@@ -6,9 +6,44 @@
     <ion-title>
       Customers
     </ion-title>
+    <ion-buttons slot="end" class="button button-clear button-positive" (click)="newModal()" >  
+         <ion-icon name="add" class="add-new"></ion-icon>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
-  </ion-content>
+<ion-header>
+  <ion-toolbar style="    padding-top: 15px; padding-bottom: 10px;">
+    <ion-buttons slot="start" style="padding-left: 15px;">
+      <ion-checkbox color="secondary" (click)="openMenu()"   [(ngModel)]="masterSelected" name="list_name" value="m1" (ionChange)="checkUncheckAll()"></ion-checkbox>
+    </ion-buttons>
+    <ion-searchbar value={{q}} (ionInput)="searchBox($event)"    style="    min-width: 200px !important;"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content color="light " class="action-sheets-home-page">  
+    <ion-list style="background: #f4f5f8;">  
+      <ion-item  lines="none" *ngFor="let item of items"   class="list-item">
+            <div class="list-item-checkbox">
+              <ion-buttons><ion-checkbox  (click)="openMenu()"  [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}" (change)="isAllSelected()"></ion-checkbox></ion-buttons>
+            </div>
+            <div class="flex padding-5px">
+              <p class="custom-list-p" color="primary" >{{item.name}}</p>
+             </div>
+            <div class="flex padding-5px">
+              <p class="custom-list-p" color="primary" style="color:#ff0062" >{{item.email}}</p>
+             </div>
+            <div class="flex padding-5px">
+              <ion-icon name="options" class="list-item-option" (click)="openActionMenu(item)"></ion-icon>
+            </div>
+       </ion-item>  
+    </ion-list>  
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+      <ion-infinite-scroll-content  
+        loadingSpinner="bubbles"  
+        loadingText="Loading more data...">  
+      </ion-infinite-scroll-content>  
+    </ion-infinite-scroll>  
+  </ion-content>  

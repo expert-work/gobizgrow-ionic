@@ -21,5 +21,47 @@
     
 
   }
-  
-  
+
+.header-md::after {
+    background-image: none !important;
+}
+ 
+.grid-div {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.grid-icon-div {
+  border-radius: 5px;
+  width: 60px;
+  background: #dbefeb;
+  align-content: center;
+  align-items: center;
+  padding: 10px;
+}
+ion-icon.grid-icon {
+  font-size: 40px;
+  color: #3c8b70;
+} 
+p.grid-description {
+  color: #929292;
+  margin-bottom: 0px;
+  margin-top: 1px;
+  font-weight: 400;
+  font-size: 14px;
+}
+p.grid-heading {
+  margin-bottom: 0px;
+  margin-top: 40px;
+}
+
+
+.side-tab {
+  border-radius: 30px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tabs-inner {
+  position: unset !important;
+}

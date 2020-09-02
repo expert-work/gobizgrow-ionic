@@ -7,7 +7,14 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.page.html',
-  styleUrls: ['./list.page.scss'],
+  styleUrls: [
+    './list.page.scss',
+    './style/listing.ios.scss',
+    './style/listing.page.scss',
+    './style/listing.shell.scss'
+
+  
+  ],
 })
 export class ListPage implements OnInit {
 

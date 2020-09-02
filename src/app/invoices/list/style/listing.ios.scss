@@ -1,0 +1,27 @@
+:host-context(.ios) {
+  // Custom platform styles here
+  .claim-button {
+    height: 2.2em;
+  }
+
+   .listname{
+    color: #419483;
+    margin-left: 10px;
+    margin-top: 4px;
+    position: absolute;
+    min-width: 300px;
+    font-size: 16px;
+   }
+   .bar-header {
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+}
+
+.my-tool-bar-with-redius{
+  border-bottom-left-radius: 40px !important;
+  --border-bottom-left-radius: 40px !important;
+  padding: 5px;
+}
+}

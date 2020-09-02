@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary" >
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -15,58 +15,82 @@
 
 
 
-<ion-header>
-  <ion-toolbar style="    padding-top: 15px; padding-bottom: 10px;">
-    <ion-buttons slot="start" style="padding-left: 15px;">
-      <ion-checkbox color="secondary" (click)="openMenu()" ></ion-checkbox>
-    </ion-buttons>
-    <ion-searchbar value={{q}} (ionInput)="searchBox($event)"    style="    min-width: 200px !important;"></ion-searchbar>
-    <ion-buttons slot="end" class="button button-clear button-positive" style="padding-right: 15px;">  
-      <ion-select placeholder="" value="f">
-        <ion-select-option value="f">All</ion-select-option>
-        <ion-select-option value="m">Draft</ion-select-option>
-        <ion-select-option value="e">Sent</ion-select-option>
-        <ion-select-option value="es">Accepted</ion-select-option>
-        <ion-select-option value="as">Decliened</ion-select-option>
-      </ion-select>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-
-
-
  
-  <ion-content color="light " class="action-sheets-home-page">  
-    <ion-list style="background: #f4f5f8;">  
-      <ion-item  lines="none" *ngFor="let item of items"   class="list-item">
-         
-            <div class="list-item-checkbox">
-              <ion-buttons><ion-checkbox  (click)="openMenu()" ></ion-checkbox></ion-buttons>
-            </div>
-            <div class="flex padding-5px">
-              <p class="custom-list-p" color="primary" >{{item.invoice_number}}</p>
-              <p class="custom-list-p" color="secondary" style="color:teal">{{item.customer_name}}</p>
-            </div>
-            <div class="flex padding-5px">
-              <p class="custom-list-p" color="primary" style="color:#ff0062" >{{item.due_date}}</p>
-              <p class="custom-list-p" color="secondary"  >{{item.invoice_date}} </p>
-            </div>
-            <div class="flex padding-5px">  
-              <p class="custom-list-p text-align-left {{item.status}}">{{item.status}}</p>
-              <p class="custom-list-p text-align-left" color="secondary" style="color:blue" >{{item.due_amount_format}} </p>
-            </div>
-            <div class="flex padding-5px">
-              <ion-icon name="options" class="list-item-option" (click)="openOptionMenu()"></ion-icon>
-            </div>
 
+
+
+
+<div class="header-tab" style="    padding: 10px 20px;">
+  <div style="border-bottom: 4px solid;"> All</div> <div>Drafts </div>
+ </div>  
+<ion-content class="deals-listing-content">
+
+  <ng-container>
+    <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
+      <ion-row class="top-row">
+        <ion-col>
+           <ion-col>
+            <ion-checkbox color="secondary" (click)="openMenu()" ></ion-checkbox>
+          </ion-col>
+          <ion-col>
+            <span class="listname">Ceramic Coating with Stuff</span><br>
+          </ion-col>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row class="middle-row" style="    padding-top: 20px;">
+        <ion-col class="info-col">
+          <h4 class="item-name">
+               <app-text-shell style="font-weight: bold;
+               font-size: 18px;
+               line-height: 16px;
+               color: #000000;" animation="bouncing" [data]="item.customer_name"></app-text-shell>
+          </h4>
+          <p class="item-description">
+            <app-text-shell animation="bouncing" lines="3" [data]="item.invoice_number"></app-text-shell>
+          </p>
+
+          <p style="font-size: 13px;">
+            
+            <span class="p-left"><ion-icon name="calendar"></ion-icon> {{item.invoice_date}}</span>
+            <span class="p-right" style="margin-left: 5%;
+            color: #9E9E9E;"><ion-icon name="arrow-up"></ion-icon>{{item.due_date}}</span>
+         
+          </p>
+
+        </ion-col>
+        <ion-col size="4">
+          <span style="text-align: right;
+          display: block;    margin-bottom: 10px;">{{item.due_amount_format}}</span>
+          <span class="item-code" [ngClass]="'PARTIAL-PAID'">
+            <app-text-shell [data]="'PARTIAL PAID'" style="float: right;
+            background: #EA9444;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            width: 100px;
+            text-align: center;
+            border-radius: 14px;
+            padding: 5px;"></app-text-shell>
+          </span>
+        </ion-col>
+      </ion-row>
+
+      
+      <ion-row class="bottom-row">
+        <ion-col class="code-wrapper">
+          <span class="code-cta">TEXT SENT</span>
+        </ion-col>
+        <ion-col class="time-left-wrapper" size="5" >
+             <ion-icon style="    padding: 5px;
+             border-radius: 5px;
+             background: #d8e7e2;
+             font-size: 20px;" name="ellipsis-vertical-outline"></ion-icon>          
         
-       </ion-item>  
-    </ion-list>  
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
-      <ion-infinite-scroll-content  
-        loadingSpinner="bubbles"  
-        loadingText="Loading more data...">  
-      </ion-infinite-scroll-content>  
-    </ion-infinite-scroll>  
-  </ion-content>  
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-container>
+</ion-content>

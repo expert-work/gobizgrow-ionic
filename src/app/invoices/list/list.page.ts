@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController ,NavController} from '@ionic/angular';
+ 
+import { Router , NavigationExtras} from '@angular/router';
 import { ApisService } from '../../services/apis.service';
 import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../services/auth.service';
@@ -18,18 +20,30 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ListPage implements OnInit {
 
- 
+  user = {
+    name: 'Simon Grimm',
+    website: 'www.ionicacademy.com',
+    address: {
+      zip: 48149,
+      city: 'Muenster',
+      country: 'DE'
+    },
+    interests: [
+      'Ionic', 'Angular', 'YouTube', 'Sports'
+    ]
+  };
  
   displayUserData: any;
   q:any;
-
+  nextInvoice:any
   constructor(
        public actionSheetController: ActionSheetController, 
        private apisService: ApisService,
        private toastService:ToastService,
-       private authService: AuthService
+       private authService: AuthService,
+       private router: Router,
+       
        ) {
-              
        }
 
 
@@ -47,7 +61,31 @@ export class ListPage implements OnInit {
     })
    }
   
-  
+  newInvoice(){
+    let form = new FormData();
+     form.append('auth_token',this.displayUserData.auth_token);
+                this.apisService.nextInvoice(form).subscribe((result: any) => {
+                      if(result.data){
+                            this.nextInvoice=result.data
+                             let navigationExtras: NavigationExtras = {
+                              state: {
+                                data: this.nextInvoice
+                              }
+                            };
+                            this.router.navigate(['app/invoices/do'], navigationExtras);
+                      } 
+                },
+                  (error: any)=>{
+                    if(error.status==0){
+                      this.toastService.presentToast('Connection failed');
+                    }
+                    if(error.status==401){
+                      this.toastService.presentToast('Authentcation failed');
+                    }
+                  }  
+              ) 
+   }
+
   loadData(event) {  
     setTimeout(() => {  
       console.log('Done');  

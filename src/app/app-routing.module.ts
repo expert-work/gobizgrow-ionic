@@ -25,31 +25,25 @@ const routes: Routes = [
     loadChildren: () => import('./signup-step-two/signup-step-two.module').then(
       m => m.SignupStepTwoPageModule
     )
-  },   {
-    path: 'sales',
-    loadChildren: () => import('./reports/sales/sales.module').then( m => m.SalesPageModule)
   },
   {
-    path: 'profit-loss',
-    loadChildren: () => import('./reports/profit-loss/profit-loss.module').then( m => m.ProfitLossPageModule)
+    path: 'upload',
+    loadChildren: () => import('./common/upload/upload.module').then( m => m.UploadPageModule)
   },
   {
-    path: 'expenses',
-    loadChildren: () => import('./reports/expenses/expenses.module').then( m => m.ExpensesPageModule)
+    path: 'new',
+    loadChildren: () => import('./images/new/new.module').then( m => m.NewPageModule)
   },
   {
-    path: 'taxes',
-    loadChildren: () => import('./reports/taxes/taxes.module').then( m => m.TaxesPageModule)
+    path: 'list',
+    loadChildren: () => import('./images/list/list.module').then( m => m.ListPageModule)
   },
   {
     path: 'edit',
-    loadChildren: () => import('./customers/edit/edit.module').then( m => m.EditPageModule)
+    loadChildren: () => import('./images/edit/edit.module').then( m => m.EditPageModule)
   },
-  {
-    path: 'vehicle',
-    loadChildren: () => import('./customers/vehicle/vehicle.module').then( m => m.VehiclePageModule)
-  }
-
+   
+  
  
 ];
 @NgModule({

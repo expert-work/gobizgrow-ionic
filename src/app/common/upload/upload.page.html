@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button  (click)="close()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="close" showWhen="android,windows"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Images</ion-title>
+    <ion-buttons slot="end" class="button button-clear button-positive" (click)="newModal()" >  
+      <ion-icon name="add" class="add-new"></ion-icon>
+     </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+ 
+
+
+<ion-content class="deals-listing-content">
+  <ng-container>
+    <ion-radio-group value={{customer.id}}>
+    <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col size="2">
+        <ion-buttons>
+          <ion-radio  value={{item.id}} (click)="selectCustomer(item)"></ion-radio>
+        </ion-buttons>
+        </ion-col>
+        <ion-col class="info-col"> 
+
+          <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="imageUrl(item.image)">
+            <app-aspect-ratio [ratio]="{w:50, h:50}">
+            </app-aspect-ratio>
+          </app-image-shell>
+
+         </ion-col>
+     
+      </ion-row>
+    </div>
+  </ion-radio-group>
+  </ng-container>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+    <ion-infinite-scroll-content  
+      loadingSpinner="bubbles"  
+      loadingText="Loading more data...">  
+    </ion-infinite-scroll-content>  
+  </ion-infinite-scroll>  
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+       <ion-col>
+        <ion-button expand="full" fill="outline" (click)="updateSelectedCusromer()"> Select Image</ion-button>
+      </ion-col>
+    </ion-row>
+          
+  </ion-toolbar>
+</ion-footer>

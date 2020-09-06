@@ -8,6 +8,8 @@ import { ListPageRoutingModule } from './list-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 
 import { ListPage } from './list.page';
+import { NewPageModule } from '../new/new.module'
+import { EditPageModule } from '../edit/edit.module'
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ListPage } from './list.page';
     FormsModule,
     IonicModule,
     ListPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NewPageModule,
+    EditPageModule
   ],
   declarations: [ListPage]
 })

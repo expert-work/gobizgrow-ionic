@@ -6,7 +6,7 @@
     <ion-title>
       Invoices
     </ion-title>
-    <ion-buttons slot="end" class="button button-clear button-positive">  
+    <ion-buttons slot="end" class="button button-clear button-positive" (click)="newInvoice()" >  
          <ion-icon name="add" class="add-new"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -19,10 +19,29 @@
 
 
 
+<ion-row>
+  <ion-col>
+    <div class="header-tab" style="    padding: 10px 20px;">
+        <div style="border-bottom: 4px solid;"> All</div> <div>Drafts </div>
+     </div>  
+  </ion-col>
+  <ion-col size="3">
+    <div class="header-tab" style="    padding: 10px 20px;">
+      <ion-icon name="funnel" style="font-size: 22px;
+      float: right;
+      color: #3c877b;
+      padding: 9px;
+      font-weight: 800;
+      padding-bottom: 0;"></ion-icon>
+    </div>
+    
+  </ion-col>
+</ion-row>
 
-<div class="header-tab" style="    padding: 10px 20px;">
-  <div style="border-bottom: 4px solid;"> All</div> <div>Drafts </div>
- </div>  
+
+
+
+
 <ion-content class="deals-listing-content">
 
   <ng-container>
@@ -93,4 +112,10 @@
       </ion-row>
     </div>
   </ng-container>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+    <ion-infinite-scroll-content  
+      loadingSpinner="bubbles"  
+      loadingText="Loading more data...">  
+    </ion-infinite-scroll-content>  
+  </ion-infinite-scroll>  
 </ion-content>

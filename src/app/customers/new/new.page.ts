@@ -171,6 +171,5 @@ export class NewPage  {
   close()
   {
     this.modalController.dismiss([]);
-
   }
 } 

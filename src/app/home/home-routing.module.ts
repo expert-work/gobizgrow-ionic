@@ -27,6 +27,14 @@ const routes: Routes = [
              m => m.DashboardPageModule
            )
       },
+
+      {
+        path:'home',
+        loadChildren: () =>
+           import('../dashboard/dashboard.module').then(
+             m => m.DashboardPageModule
+           )
+      },
         {
           path : 'reports/sales',
           loadChildren : () => import('../reports/sales/sales.module').then(
@@ -50,6 +58,16 @@ const routes: Routes = [
          loadChildren : () => import('../reports/taxes/taxes.module').then(
            m => m.TaxesPageModule
          )
+        },
+
+
+
+
+        {
+          path: 'app/invoices/do',
+          loadChildren : () => import('../invoices/new/new.module').then(
+            m => m.NewPageModule
+          )
         }
   
       

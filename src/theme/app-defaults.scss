@@ -1,7 +1,13 @@
-ion-title {
-  font-weight: 400;
-  letter-spacing: 0.4px;
+.ion-color-secondary {
+  --ion-color-base: #3e9bf7 !important;
+  --ion-color-base-rgb: var(--ion-color-secondary-rgb, 61, 194, 255) !important;
+  --ion-color-contrast: var(--ion-color-secondary-contrast, #fff) !important;
+  --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb, 255, 255, 255) !important;
+  --ion-color-shade: #3e9bf7 !important;
+  --ion-color-tint: #3e9bf7 !important;
 }
+
+
 .align-center {
   text-align: center;
 }
@@ -23,6 +29,9 @@ ion-title {
 }
 .padding20 {
   padding:20px!important;
+}
+.width100per{
+  width: 100%;
 }
 .home-slider-description {
   max-width: 700px;
@@ -73,7 +82,12 @@ ion-title {
 }
 
 
-
+.show{
+  display: block;
+}
+.hide{
+display: none;
+}
 .flex{
   flex:1;
 }
@@ -174,6 +188,14 @@ ion-datetime {
     }
   }
 }
+
+.loading{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+   right: 45%;
+  bottom: 45%;
+}
 .img-wrapper {
   min-height: 200px;
   width: 100%;
@@ -181,6 +203,56 @@ ion-datetime {
   background-repeat: no-repeat;
 }
 
+
+
+///form
+div.input-item {
+  padding: 0px 10px;
+  background: white;
+  margin-top: 5px;
+  flex: 1;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  flex-direction: row;
+  display: flex;
+}
+.form-column{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+label.form-label {
+  font-size: 18px;
+  color: #378275;
+}
+ion-icon {
+  cursor: pointer;
+}
+
+.img-remove-button-shell{
+  top: 0px;
+    color: white;
+    background: red;
+    position: absolute;
+    border-radius: 50%;
+    right: 0;
+    font-size: 14px;
+     z-index: 999999999999999999;
+}
+.form-tax-value {
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  color: #378175;
+  padding: 10px 3px;
+  width: 100%;
+}
+.form-tax-heading {
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  color: #378175;
+  padding: 10px 3px;
+  width: 100%;
+}
 @media screen and (min-width: 640px) {
   .custom-list-p{
     font-size: 20px;

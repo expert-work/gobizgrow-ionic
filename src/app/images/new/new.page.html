@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button  (click)="close()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="close" showWhen="android,windows"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New Image</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content style="
+flex: 5;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+ flex-direction: column;">
+     
+  <ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
+  <input
+  type="file"
+  #fileInput
+  (change)="uploadFile($event)"
+  hidden="true"
+  accept="image/*"
+/>
+
+  <ion-icon name="add"  *ngIf="!loading" style="
+   position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    display: block;
+    color: white !important;
+    background: #ff0062;
+    border-radius: 50%;" (click)="selectImageSource()"  ></ion-icon>
+
+  
+</ion-content> 

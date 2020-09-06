@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button  (click)="close()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="close" showWhen="android,windows"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Customers</ion-title>
+    <ion-buttons slot="end" class="button button-clear button-positive" (click)="newModal()" >  
+      <ion-icon name="add" class="add-new"></ion-icon>
+     </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-header>
+  <ion-toolbar style="    padding-top: 15px; padding-bottom: 10px;">
+    <ion-searchbar value={{q}} (ionInput)="searchBox($event)"    style="    min-width: 200px !important;"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="deals-listing-content">
+  <ng-container>
+    <ion-radio-group value={{customer.id}}>
+    <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col size="2">
+        <ion-buttons>
+          <ion-radio  value={{item.id}} (click)="selectCustomer(item)"></ion-radio>
+        </ion-buttons>
+        </ion-col>
+        <ion-col class="info-col" size="5"> 
+          <app-text-shell animation="bouncing" lines="3" [data]="item.name"></app-text-shell>
+        </ion-col>
+        <ion-col class="info-col" size="5">
+          <p class="item-description">
+            <app-text-shell animation="bouncing" lines="3" [data]="item.email"></app-text-shell>
+          </p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-radio-group>
+  </ng-container>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+    <ion-infinite-scroll-content  
+      loadingSpinner="bubbles"  
+      loadingText="Loading more data...">  
+    </ion-infinite-scroll-content>  
+  </ion-infinite-scroll>  
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+       <ion-col>
+        <ion-button expand="full" fill="outline" (click)="updateSelectedCusromer()">Update Selected Customer</ion-button>
+      </ion-col>
+    </ion-row>
+          
+  </ion-toolbar>
+</ion-footer>

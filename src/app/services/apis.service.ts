@@ -193,6 +193,18 @@ itemAdd(postData: any): Observable<any> {
 }
 
 
+taxAdd(postData: any): Observable<any> {
+  return this.httpService.post('tax/add',postData);
+}
+
+
+invoiceAdd(postData: any): Observable<any> {
+  return this.httpService.post('invoices/add',postData);
+}
+
+invoiceUpdate(postData: any): Observable<any> {
+  return this.httpService.post('invoices/edit',postData);
+}
  //Invoices
  //Items
  //Payments

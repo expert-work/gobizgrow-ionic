@@ -9,7 +9,7 @@ import { ApisService } from '../../services/apis.service'
 
 import { StorageService } from '../../services/storage.service';
 import { ToastService } from '../../services/toast.service';
-import { NewPage} from '../../item-categories/new/new.page';
+import { NewPage} from '../../items/new/new.page';
 
 
 @Component({
@@ -86,7 +86,7 @@ export class ItemsPage implements OnInit {
               let items=[];
               this.items.map(function (item) {
                    self.itemsServices.map(function (itemsService) {
-                     if(item.id==itemsService.id){
+                     if(item.id==itemsService.item_id){
                       item.isSelected=true;
                      }
                    });
@@ -160,12 +160,15 @@ checkUncheckAll() {
     this.items.map(function (item) {
       if(item.isSelected){
                     let isAlready=false;
-                     self.itemsServices.map(function (itemsService) {
-                          if(item.id==itemsService.id){ isAlready= itemsService; }
+                     self.itemsServices.map(function (i) {
+                          if(item.id==i.item_id){ isAlready= i; }
                       });
                       if(!isAlready){
                         item.quantity=1;
-                        item.total= item.price;
+                        item.quantity=1;
+                        item.total=item.price;
+                        item.item_id= item.id;
+                        item.id=self.apisService.makeid(10);
                         itemsServices.push(item);
                       }else{
                         itemsServices.push(isAlready);

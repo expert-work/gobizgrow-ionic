@@ -24,8 +24,7 @@ export class NewPage implements OnInit {
   validation_messages = {
     'name': [
       { type: 'required', message: 'Name is required.' },
-      { type: 'minlength', message: 'Password must be at least 2 characters long.' }
-    ]
+      ]
   };
 
  

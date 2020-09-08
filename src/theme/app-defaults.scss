@@ -253,6 +253,53 @@ ion-icon {
   padding: 10px 3px;
   width: 100%;
 }
+
+app-text-shell.DRAFT {
+  float: right;
+  background: #3880ff !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100px;
+  text-align: center;
+  border-radius: 14px;
+  padding: 5px;
+}
+app-text-shell.SENT {
+  float: right;
+  background: #2dd36f !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100px;
+  text-align: center;
+  border-radius: 14px;
+  padding: 5px;
+}
+
+app-text-shell.COMPLETED {
+  float: right;
+  background: #378175 !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100px;
+  text-align: center;
+  border-radius: 14px;
+  padding: 5px;
+   
+}
+app-text-shell.PARTIAL.PAID {
+  float: right;
+  background: #259abf !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100px;
+  text-align: center;
+  border-radius: 14px;
+  padding: 5px;
+}
 @media screen and (min-width: 640px) {
   .custom-list-p{
     font-size: 20px;

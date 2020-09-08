@@ -1,9 +1,64 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>new</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button  (click)="close()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="close" showWhen="android,windows"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New Tax</ion-title>
+    <ion-button slot="end" class="button button-clear button-positive"   style="color: white;"   [disabled]="!form.valid || desabled"  (click)="saveForm()">  
+      <ion-icon name="share"></ion-icon>
+    </ion-button>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
-</ion-content>
+<ion-content>
+     
+
+
+ <div  class="dispplay-content-center">
+   <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+    <ion-list class="inputs-list" lines="full">
+      <ion-item class="input-item">
+        <ion-input type="text" placeholder="Name" formControlName="name" clearInput autocapitalize="off"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validation_messages.name">
+          <div class="error-message" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item class="input-item">
+        <ion-input type="number" placeholder="Percent" formControlName="percent" clearInput autocapitalize="off"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validation_messages.percent">
+          <div class="error-message" *ngIf="form.get('percent').hasError(validation.type) && (form.get('percent').dirty || form.get('percent').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item class="input-item">
+        <ion-textarea type="text" placeholder="Description... " formControlName="description" clearInput autocapitalize="off" ></ion-textarea> 
+      </ion-item>
+    </ion-list>
+
+
+    
+
+    <div class="padding20"></div>
+
+    <ion-button class="login-btn" type="submit" expand="block"   [disabled]="!form.valid || desabled">Save Now</ion-button>
+    <div class="padding20"></div>
+  </form>
+</div> 
+</ion-content> 

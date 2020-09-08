@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
  
 import { Platform,ActionSheetController ,NavController,ModalController} from '@ionic/angular';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute,NavigationExtras } from '@angular/router';
 import { ApisService,ApiImage } from '../../services/apis.service';
 import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../services/auth.service';
@@ -87,82 +87,13 @@ export class NewPage implements OnInit {
 
     // //// Image Upload Start
 
-    loadImages() {
-      this.apisService.getImages().subscribe(images => {
-        this.images = images;
-      });
-    }
-   
-    async selectImageSource() {
-      const buttons = [
-        {
-          text: 'Take Photo',
-          icon: 'camera',
-          handler: () => {
-            this.addImage(CameraSource.Camera);
-          }
-        },
-        {
-          text: 'Choose From Photos Photo',
-          icon: 'image',
-          handler: () => {
-            this.addImage(CameraSource.Photos);
-          }
-        }
-      ];
-   
-      // Only allow file selection inside a browser
-      if (!this.platform.is('hybrid')) {
-        buttons.push({
-          text: 'Choose a File',
-          icon: 'attach',
-          handler: () => {
-            this.fileInput.nativeElement.click();
-          }
-        });
-      }
-   
-      const actionSheet = await this.actionSheetController.create({
-        header: 'Select Image Source',
-        buttons
-      });
-      await actionSheet.present();
-    }
-   
-    async addImage(source: CameraSource) {
-      const image = await Camera.getPhoto({
-        //Quality
-        quality: 60,
-        allowEditing: true,
-        resultType: CameraResultType.Base64,
-        source
-      });
-   
-      const blobData = this.apisService.b64toBlob(image.base64String, `image/${image.format}`);
-      const imageName = 'Give me a name';
-   
-      this.apisService.uploadImage(blobData, imageName, image.format, this.displayUserData.auth_token).subscribe((newImage: ApiImage) => {
-        this.images.push(newImage);
-      });
-    }
-   
-    // Used for browser direct file upload
-    uploadFile(event: EventTarget) {
-      const eventObj: MSInputMethodContext = event as MSInputMethodContext;
-      const target: HTMLInputElement = eventObj.target as HTMLInputElement;
-      const file: File = target.files[0];
-      this.apisService.uploadImageFile(file,this.displayUserData.auth_token).subscribe((newImage: ApiImage) => {
-        this.images.push(newImage);
-      });
-    }
-   
-    deleteImage(image: ApiImage, index) {
-      this.apisService.deleteImage(image._id).subscribe(res => {
-        this.images.splice(index, 1);
-      });
-    }
-  
+    
 
+    imageUrl(img:any){
+      return this.apisService.getImageUrl(img);
+    }
+   
+ 
 
     //Image Upload End
 
@@ -255,15 +186,98 @@ export class NewPage implements OnInit {
         backdropDismiss:false
       });
       modal.onDidDismiss().then(data=>{
-         if(this.apisService.isDefined(data.data[0])){
-            
+         if(this.apisService.isDefined(data.data.id)){
+          console.log(data.data)
+          
+          let photo= data.data;
+          photo.notes='';
+          photo.id=this.apisService.makeid(20);
+          
+          if(type=='Before'){
+           let photos= this.data.before_photos;
+           photos.push(photo);
+           this.data.before_photos=photos;
+          }
+
+          if(type=='After'){
+            let photos= this.data.after_photos;
+            photos.push(photo);
+            this.data.after_photos=photos;
+           }
+
+           if(type=='Other'){
+            let photos= this.data.other_photos;
+            photos.push(photo);
+            this.data.other_photos=photos;
+           }           
           }
       })
       return await modal.present();
     }
 
+    updateImageNoteChange(type:any,item:any,event:any){
+              if(type=='Before'){
+                    let tempArray=[];
+                    this.data.before_photos.map(function (i) {
+                      if(item.id ==i.id){  i.notes=event.target.value; } 
+                      tempArray.push(i); 
+                    });
+                    this.data.before_photos=tempArray;
+              }
+
+              if(type=='After'){
+                    let tempArray=[];
+                    this.data.after_photos.map(function (i) {
+                      if(item.id ==i.id){  i.notes=event.target.value; } 
+                      tempArray.push(i); 
+                    });
+                    this.data.after_photos=tempArray;
+              }
+
+              if(type=='Other'){
+                let tempArray=[];
+                this.data.other_photos.map(function (i) {
+                  if(item.id ==i.id){  i.notes=event.target.value; } 
+                  tempArray.push(i); 
+                });
+                this.data.other_photos=tempArray;
+            }
+    }
 
 
+    removeImage(type:any,item:any,){
+              if(type=='Before'){
+                let tempArray=[];
+                this.data.before_photos.map(function (i) {
+                  if(item.id !=i.id){  tempArray.push(i);  } 
+                });
+                this.data.before_photos=tempArray;
+              }
+
+              if(type=='After'){
+                    let tempArray=[];
+                    this.data.after_photos.map(function (i) {
+                      if(item.id !=i.id){ tempArray.push(i);   } 
+                    });
+                    this.data.after_photos=tempArray;
+              }
+
+              if(type=='Other'){
+                    let tempArray=[];
+                    this.data.other_photos.map(function (i) {
+                      if(item.id !=i.id){   tempArray.push(i);   } 
+                    });
+                    this.data.other_photos=tempArray;
+                }
+      
+    }
+
+    updateNotesChange(event:any){
+      this.data.notes=event.target.value;
+
+      console.log(this.data);
+      
+    }
     updatePriceChange(item:any,event:any){
       let tempArray=[];
           this.data.items.map(function (i) {
@@ -274,6 +288,18 @@ export class NewPage implements OnInit {
           this.calculateInvoice();
     }
 
+    
+    updateInvoiceNameChange(event:any){
+      this.data.name=event.target.value;
+    }
+
+    updateDueDateChange(event:any){
+      this.data.due_date=event.target.value;
+    }
+
+    updateInvoiceDateChange(event:any){
+      this.data.invoice_date=event.target.value;
+    }
     updateQuantityChange(item:any,event:any){
       let tempArray=[];
       this.data.items.map(function (i) {
@@ -286,7 +312,7 @@ export class NewPage implements OnInit {
     updateDescriptionChange(item:any,event:any){
       let tempArray=[];
       this.data.items.map(function (i) {
-          if(item.id ==i.id){ i.description=event.target.value; } 
+          if(item.id ==i.id){ i.notes=event.target.value; } 
           tempArray.push(i); 
       });
       this.data.items=tempArray;
@@ -358,7 +384,116 @@ export class NewPage implements OnInit {
        this.data.customer.selectedVehicle=$event.target.value
      // console.log(this.data.customer.selectedVehicle);
     }
-  saveForm(){
+  saveForm(type:any){
+  
 
-  }
+
+
+                console.log('before')
+                //Invoice name validation
+                if(this.data.name==''){
+                  this.toastService.presentToast('Please Enter a Invoice Name');
+                  return false;
+                }
+
+                //Invoice invoice_date validation
+                if(this.data.invoice_date==''){
+                  this.toastService.presentToast('Please select a date ');
+                  return false;
+              }
+
+                //Invoice due_date validation
+                if(this.data.due_date==''){
+                  this.toastService.presentToast('Please select a due date ');
+                  return false;
+              }
+
+              
+              //Invoice name validation
+              if(!this.apisService.isDefined(this.data.customer.id) || this.data.customer.id==''){
+                this.toastService.presentToast('Please select a customer ');
+                return false;
+              }
+
+
+              //Item name validation
+              if(!this.data.items.length){
+                this.toastService.presentToast('Please select an Item/Services ');
+                  return false;
+              }    
+
+
+              //Subtotal name validation
+              if(this.data.sub_total<1){
+                this.toastService.presentToast('Subtotal must be greater then zero ');
+                  return false;
+              }
+              
+
+
+              //amount name validation
+              if(this.data.total<1){
+                this.toastService.presentToast('Total amount must be grater then zero');
+                  return false;
+              }
+                let form = new FormData();
+                form.append('auth_token',this.displayUserData.auth_token);
+                form.append('data', JSON.stringify(this.data));
+
+                if(this.apisService.isDefined(this.data.auth_token)){
+                  console.log('update call');
+                  this.saveUpdateForm(form);
+                }else{
+                 console.log('Add new call');
+                 this.saveAddForm(form)
+                }
+
+   }
+
+
+  saveUpdateForm(form:any){
+              this.apisService.invoiceUpdate(form).subscribe((result: any) => {
+                if(result.data){
+                    let navigationExtras: NavigationExtras = {
+                      state: {
+                          data:  'refresh'
+                        }
+                    };
+                    this.router.navigate(['app/invoices'], navigationExtras);
+                } 
+              },
+              (error: any)=>{
+                      if(error.status==0){
+                        this.toastService.presentToast('Connection failed');
+                      }
+                      if(error.status==401){
+                        this.toastService.presentToast('Authentcation failed');
+                      }
+                 }  
+              ) 
+   }
+
+
+   saveAddForm(form:any){
+                  this.apisService.invoiceAdd(form).subscribe((result: any) => {
+                    if(result.data){
+                        let navigationExtras: NavigationExtras = {
+                          state: {
+                              data:  'refresh'
+                            }
+                        };
+                        this.router.navigate(['app/invoices'], navigationExtras);
+                    } 
+              },
+                (error: any)=>{
+                  if(error.status==0){
+                    this.toastService.presentToast('Connection failed');
+                  }
+                  if(error.status==401){
+                    console.log(error);
+                    this.toastService.presentToast(error.error.data);
+                  }
+                }  
+            ) 
+      }
 }

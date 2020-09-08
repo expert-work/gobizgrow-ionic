@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ComponentsModule } from '../../components/components.module';
 
- import {  NewPageModule } from '../../item-categories/new/new.module';
+ import {  NewPageModule } from '../../items/new/new.module';
 
 import { ItemsPageRoutingModule } from './items-routing.module';
 

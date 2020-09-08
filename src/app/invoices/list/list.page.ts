@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController ,NavController} from '@ionic/angular';
  
-import { Router , NavigationExtras} from '@angular/router';
+import { Router , ActivatedRoute,NavigationExtras} from '@angular/router';
 import { ApisService } from '../../services/apis.service';
 import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../services/auth.service';
@@ -42,8 +42,25 @@ export class ListPage implements OnInit {
        private toastService:ToastService,
        private authService: AuthService,
        private router: Router,
+       private route: ActivatedRoute,
        
        ) {
+
+///page refresss start
+        this.route.queryParams.subscribe(params => {
+          if (this.router.getCurrentNavigation().extras.state) {
+            let data = this.router.getCurrentNavigation().extras.state.data; 
+             if(data=='refresh'){
+              this.page=1;
+              this.items = [];
+              this.addMoreItems()
+             }
+          }
+        });
+///page refresss END
+
+
+
        }
 
 
@@ -59,7 +76,7 @@ export class ListPage implements OnInit {
       this.q='';
       if (this.displayUserData.auth_token !== undefined) { this.addMoreItems(); }
     })
-   }
+   } 
   
   newInvoice(){
     let form = new FormData();
@@ -102,7 +119,8 @@ export class ListPage implements OnInit {
           this.apisService.invoices(form).subscribe((result: any) => {
              if(result.data.total){
                this.page= this.page+1;
-               this.items.push(...result.data.data)
+               this.items.push(...result.data.data);
+               this.items= this.apisService.sortArray(this.items);
              }else{
 
              }
@@ -146,14 +164,23 @@ export class ListPage implements OnInit {
   }  
 
 
-  async openOptionMenu() {  
+  async openOptionMenu(item) {  
     const actionSheet = await this.actionSheetController.create({  
      // header: 'Action',  
       buttons: [ 
         {  
           text: 'Update',  
            handler: () => {  
-            console.log('Destructive clicked');  
+            let navigationExtras: NavigationExtras = {
+              state: {
+                data: item
+              }
+            };
+            this.router.navigate(['app/invoices/do'], navigationExtras);
+
+
+
+
           }  
         }, 
         {  

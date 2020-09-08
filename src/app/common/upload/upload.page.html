@@ -22,12 +22,12 @@
 
 <ion-content class="deals-listing-content">
   <ng-container>
-    <ion-radio-group value={{customer.id}}>
+    <ion-radio-group value={{image.id}}>
     <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
       <ion-row class="middle-row" style="padding-top: 20px;">
         <ion-col size="2">
         <ion-buttons>
-          <ion-radio  value={{item.id}} (click)="selectCustomer(item)"></ion-radio>
+          <ion-radio  value={{item.id}} (click)="selectImage(item)"></ion-radio>
         </ion-buttons>
         </ion-col>
         <ion-col class="info-col"> 
@@ -55,7 +55,7 @@
   <ion-toolbar>
     <ion-row>
        <ion-col>
-        <ion-button expand="full" fill="outline" (click)="updateSelectedCusromer()"> Select Image</ion-button>
+        <ion-button expand="full" fill="outline" (click)="updateSelectedImage()"> Select Image</ion-button>
       </ion-col>
     </ion-row>
           

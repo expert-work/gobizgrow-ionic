@@ -52,7 +52,7 @@
             <ion-checkbox color="secondary" (click)="openMenu()" ></ion-checkbox>
           </ion-col>
           <ion-col>
-            <span class="listname">Ceramic Coating with Stuff</span><br>
+            <span class="listname">{{item.name}}</span><br>
           </ion-col>
         </ion-col>
       </ion-row>
@@ -73,9 +73,9 @@
 
           <p style="font-size: 13px;">
             
-            <span class="p-left"><ion-icon name="calendar"></ion-icon> {{item.invoice_date}}</span>
+            <span class="p-left"><ion-icon name="calendar"></ion-icon> {{item.invoice_date_dmy}}</span>
             <span class="p-right" style="margin-left: 5%;
-            color: #9E9E9E;"><ion-icon name="arrow-up"></ion-icon>{{item.due_date}}</span>
+            color: #9E9E9E;"><ion-icon name="arrow-up"></ion-icon>{{item.due_date_dmy}}</span>
          
           </p>
 
@@ -84,15 +84,7 @@
           <span style="text-align: right;
           display: block;    margin-bottom: 10px;">{{item.due_amount_format}}</span>
           <span class="item-code" [ngClass]="'PARTIAL-PAID'">
-            <app-text-shell [data]="'PARTIAL PAID'" style="float: right;
-            background: #EA9444;
-            color: white;
-            font-weight: 600;
-            font-size: 12px;
-            width: 100px;
-            text-align: center;
-            border-radius: 14px;
-            padding: 5px;"></app-text-shell>
+            <app-text-shell [data]="item.status"    class="{{item.status}}" ></app-text-shell>
           </span>
         </ion-col>
       </ion-row>
@@ -103,7 +95,7 @@
           <span class="code-cta">TEXT SENT</span>
         </ion-col>
         <ion-col class="time-left-wrapper" size="5" >
-             <ion-icon style="    padding: 5px;
+             <ion-icon (click)="openOptionMenu(item)" style="    padding: 5px;
              border-radius: 5px;
              background: #d8e7e2;
              font-size: 20px;" name="ellipsis-vertical-outline"></ion-icon>          

@@ -9,7 +9,7 @@ import { ApisService } from '../../services/apis.service'
 
 import { StorageService } from '../../services/storage.service';
 import { ToastService } from '../../services/toast.service';
-import { NewPage} from '../../item-categories/new/new.page';
+import { NewPage} from '../../taxes/new/new.page';
 
 
 @Component({
@@ -87,7 +87,7 @@ export class TaxesPage implements OnInit {
               let items=[];
               this.items.map(function (item) {
                    self.itemsServices.map(function (itemsService) {
-                     if(item.id==itemsService.id){
+                     if(item.id==itemsService.tax_id){
                       item.isSelected=true;
                      }
                    });
@@ -156,25 +156,25 @@ checkUncheckAll() {
   }
 
   updateSelectedItems(){
-    let itemsServices=[];
+    let IServices=[];
     let self=this;
     this.items.map(function (item) {
       if(item.isSelected){
                     let isAlready=false;
                      self.itemsServices.map(function (itemsService) {
-                          if(item.id==itemsService.id){ isAlready= itemsService; }
+                          if(item.id==itemsService.tax_id){ isAlready= itemsService; }
                       });
                       if(!isAlready){
                         item.quantity=1;
                         item.total= item.price;
-                        itemsServices.push(item);
+                        IServices.push(item);
                       }else{
-                        itemsServices.push(isAlready);
+                        IServices.push(isAlready);
                       }
                     }
     });
-    console.log(itemsServices);
-    this.modalController.dismiss(itemsServices);
+    console.log(IServices);
+    this.modalController.dismiss(IServices);
 
   //  price
   }

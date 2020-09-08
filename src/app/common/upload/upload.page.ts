@@ -25,7 +25,7 @@ import { NewPage } from '../../images/new/new.page'
 })
 export class UploadPage implements OnInit {
   displayUserData:any;
-  customer:any;
+  image:any;
 
   constructor(
     public router: Router,
@@ -37,10 +37,10 @@ export class UploadPage implements OnInit {
     navParams: NavParams,
     public modalController: ModalController
   ) {
-    this.customer=navParams.get('data');
+    this.image=navParams.get('data');
 
     console.log('popup open start');
-    console.log(this.customer);
+    console.log(this.image);
     console.log('popup open end');
 
 
@@ -112,13 +112,13 @@ export class UploadPage implements OnInit {
   return await modal.present();
 }
 
-  selectCustomer(item){
-    this.customer= item;  
+  selectImage(item){
+    this.image= item;  
     
   }
 
- updateSelectedCusromer(){
-  this.modalController.dismiss(this.customer);
+ updateSelectedImage(){
+  this.modalController.dismiss(this.image);
  }
    close() { this.modalController.dismiss([]);  }
 

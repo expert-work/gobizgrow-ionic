@@ -216,11 +216,11 @@ invoiceUpdate(postData: any): Observable<any> {
 
 
 estimateAdd(postData: any): Observable<any> {
-  return this.httpService.post('invoices/add',postData);
+  return this.httpService.post('estimates/add',postData);
 }
 
 estimateUpdate(postData: any): Observable<any> {
-  return this.httpService.post('invoices/edit',postData);
+  return this.httpService.post('estimates/edit',postData);
 }
 
  //Invoices

@@ -9,8 +9,9 @@
       
   </ion-toolbar>
 </ion-header>
+<ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
 
-<ion-content  style="--background: #f6f6f6;">
+<ion-content  *ngIf="!loading" style="--background: #f6f6f6;">
   <ion-grid>
     <h3 style="font-size: 30px;
     font-weight: 400;
@@ -103,7 +104,7 @@
   
 
 
-  <ion-footer class="ion-no-border" style="background: white;" >
+  <ion-footer *ngIf="!loading" class="ion-no-border" style="background: white;" >
   <ion-tabs style="display: unset;position: unset;">
     <ion-tab-bar  style="background:white;--border: 0;">
 

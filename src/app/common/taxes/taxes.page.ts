@@ -30,6 +30,7 @@ export class TaxesPage implements OnInit {
   masterSelected:boolean;
   checklist:any;
   checkedList:any;
+  loading:boolean;
   constructor(
     public router: Router,
     public menu: MenuController,
@@ -40,7 +41,7 @@ export class TaxesPage implements OnInit {
     navParams: NavParams,
     public modalController: ModalController
   ) {
-
+    this.loading=true;
     this.itemsServices=navParams.get('data');
     console.log('modelOpenStart')
     console.log(this.itemsServices)
@@ -79,6 +80,7 @@ export class TaxesPage implements OnInit {
         form.append('q',this.q );
         form.append('auth_token',this.displayUserData.auth_token);
          this.apisService.taxes(form).subscribe((result: any) => {
+          this.loading=false;
             if(result.data.total){
               this.page= this.page+1;
               this.items.push(...result.data.data)

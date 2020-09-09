@@ -90,7 +90,7 @@
             <label class="form-label"> Start Time</label>
             <div class="input-item" >
               <ion-icon name="calendar-outline" style="    font-size: 40px; color: #378275;"></ion-icon>
-              <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"  (ionChange)="updateDateChange($event)"  [value]="data.estimate_date"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+              <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"  (ionChange)="updateStartTimeChange($event)"  [value]="data.start_time"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
             </div>
          </ion-col>
           
@@ -107,7 +107,7 @@
             <label class="form-label"> End Time</label>
             <div class="input-item">
                   <ion-icon name="calendar-outline" style="   font-size: 40px; color: #378275;"></ion-icon>
-                  <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A" (ionChange)="updateDueDateChange($event)"  [value]="data.due_date"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+                  <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A" (ionChange)="updateEndTimeChange($event)"  [value]="data.end_time"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
             </div>
           
           </ion-col> 

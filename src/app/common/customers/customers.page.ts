@@ -25,7 +25,7 @@ import { NewPage } from '../../customers/new/new.page'
 export class CustomersPage implements OnInit {
   displayUserData:any;
   customer:any;
-
+  loading:boolean;
   constructor(
     public router: Router,
     public menu: MenuController,
@@ -41,7 +41,7 @@ export class CustomersPage implements OnInit {
     console.log('popup open start');
     console.log(this.customer);
     console.log('popup open end');
-
+    this.loading=true;
 
   }
   q:any
@@ -74,6 +74,7 @@ export class CustomersPage implements OnInit {
         form.append('q',this.q );
         form.append('auth_token',this.displayUserData.auth_token);
          this.apisService.customers(form).subscribe((result: any) => {
+          this.loading=false;
             if(result.data.total){
               this.page= this.page+1;
               this.items.push(...result.data.data)

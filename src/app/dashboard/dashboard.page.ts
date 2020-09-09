@@ -17,7 +17,7 @@ export class DashboardPage implements OnInit {
     Payment:any
     Expense:any
     displayUserData: any;
-
+    loading:boolean
   constructor(
        public actionSheetController: ActionSheetController, 
        private apisService: ApisService,
@@ -30,6 +30,7 @@ export class DashboardPage implements OnInit {
         this.Item=0;
         this.Payment=0;
         this.Expense=0;
+        this.loading=true
               
        }
        ngOnInit(){
@@ -43,6 +44,7 @@ export class DashboardPage implements OnInit {
             let form = new FormData();
               form.append('auth_token',this.displayUserData.auth_token);
              this.apisService.dashboard(form).subscribe((result: any) => {
+              this.loading=false;
                 if(result.data.Customer){
                   this.Invoice=result.data.Invoice;
                   this.Customer=result.data.Customer;

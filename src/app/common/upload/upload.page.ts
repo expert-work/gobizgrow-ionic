@@ -26,7 +26,7 @@ import { NewPage } from '../../images/new/new.page'
 export class UploadPage implements OnInit {
   displayUserData:any;
   image:any;
-
+  loading:boolean;
   constructor(
     public router: Router,
     public menu: MenuController,
@@ -37,6 +37,7 @@ export class UploadPage implements OnInit {
     navParams: NavParams,
     public modalController: ModalController
   ) {
+    this.loading=true;
     this.image=navParams.get('data');
 
     console.log('popup open start');
@@ -75,6 +76,7 @@ export class UploadPage implements OnInit {
         form.append('q',this.q );
         form.append('auth_token',this.displayUserData.auth_token);
          this.apisService.images(form).subscribe((result: any) => {
+          this.loading=false;
             if(result.data.total){
               this.page= this.page+1;
               this.items.push(...result.data.data)

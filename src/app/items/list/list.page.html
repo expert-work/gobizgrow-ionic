@@ -25,7 +25,9 @@
 
 
 <ion-content class="deals-listing-content">
-  <ng-container>
+  <ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
+
+  <ng-container  *ngIf="!loading" >
     <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
       <ion-row class="middle-row" style="padding-top: 20px;">
         <ion-col size="2">

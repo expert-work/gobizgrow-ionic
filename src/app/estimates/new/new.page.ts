@@ -294,6 +294,14 @@ export class NewPage implements OnInit {
       this.data.due_date=event.target.value;
     }
 
+    updateStartTimeChange(event:any){
+      this.data.start_time=event.target.value;
+    }
+
+    updateEndTimeChange(event:any){
+      this.data.end_time=event.target.value;
+    }
+
     updateDateChange(event:any){
       this.data.estimate_date=event.target.value;
     }

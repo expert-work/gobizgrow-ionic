@@ -150,6 +150,13 @@ invoices(postData: any): Observable<any> {
 
 nextInvoice(postData: any): Observable<any> {
   return this.httpService.post('invoices/next',postData);
+
+}
+
+
+nextEstimate(postData: any): Observable<any> {
+  return this.httpService.post('estimates/next',postData);
+
 }
 
 items(postData: any): Observable<any> {
@@ -205,6 +212,17 @@ invoiceAdd(postData: any): Observable<any> {
 invoiceUpdate(postData: any): Observable<any> {
   return this.httpService.post('invoices/edit',postData);
 }
+
+
+
+estimateAdd(postData: any): Observable<any> {
+  return this.httpService.post('invoices/add',postData);
+}
+
+estimateUpdate(postData: any): Observable<any> {
+  return this.httpService.post('invoices/edit',postData);
+}
+
  //Invoices
  //Items
  //Payments

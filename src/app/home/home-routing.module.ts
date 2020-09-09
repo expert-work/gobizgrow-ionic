@@ -68,9 +68,15 @@ const routes: Routes = [
           loadChildren : () => import('../invoices/new/new.module').then(
             m => m.NewPageModule
           )
+        },
+        {
+          path: 'app/estimates/do',
+          loadChildren : () => import('../estimates/new/new.module').then(
+            m => m.NewPageModule
+          )
         }
   
-      
+        
       
     ]
   }

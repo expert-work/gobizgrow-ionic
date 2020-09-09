@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ReportsPageRoutingModule } from './reports-routing.module';
+import { ComponentsModule } from '../../components/components.module';
 
 import { ReportsPage } from './reports.page';
 
@@ -13,7 +14,8 @@ import { ReportsPage } from './reports.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ReportsPageRoutingModule
+    ReportsPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ReportsPage]
 })

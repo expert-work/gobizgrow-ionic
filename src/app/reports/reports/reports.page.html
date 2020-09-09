@@ -6,22 +6,61 @@
     <ion-title>
       Reports
     </ion-title>
-  </ion-toolbar>
+       </ion-toolbar>
 </ion-header>
 
-<ion-content class="action-sheets-home-page">
-  <ion-list style="background: #f4f5f8;">  
-     <ion-item  lines="none"  class="list-item" [routerLink]="['/reports/sales']">
-      <p class="custom-list-p" color="primary" >Sales</p>
-     </ion-item>
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/profit-loss']">
-      <p class="custom-list-p" color="primary" > Profit & Loss</p>
-     </ion-item>
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/expenses']">
-      <p class="custom-list-p" color="primary" > Expenses </p>
-     </ion-item>
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/taxes']">
-      <p class="custom-list-p" color="primary" > Taxes </p>
-     </ion-item>
-  </ion-list>
-  </ion-content>
+
+
+<ion-content class="deals-listing-content">
+  <ng-container>
+    
+    <div class="listing-item"   >
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col class="info-col" size="11" style="padding: 10px;">
+          <app-text-shell animation="bouncing" lines="3" [data]="'Sales'"></app-text-shell>
+         </ion-col>
+        <ion-col size="1" [routerLink]="['/reports/sales']">
+          <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="listing-item"   >
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col class="info-col" size="11" style="padding: 10px;">
+          <app-text-shell animation="bouncing" lines="3" [data]="'Profit & Loss'"></app-text-shell>
+         </ion-col>
+        <ion-col size="1"  [routerLink]="['/reports/profit-loss']">
+          <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+    <div class="listing-item"   >
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col class="info-col" size="11" style="padding: 10px;">
+          <app-text-shell animation="bouncing" lines="3" [data]="'Expenses'"></app-text-shell>
+         </ion-col>
+        <ion-col size="1" [routerLink]="['/reports/expenses']">
+          <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+    <div class="listing-item"   >
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col class="info-col" size="11" style="padding: 10px;">
+          <app-text-shell animation="bouncing" lines="3" [data]="'Taxes'"></app-text-shell>
+         </ion-col>
+        <ion-col size="1" [routerLink]="['/reports/taxes']">
+          <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    </ng-container>
+</ion-content>
+
+ 

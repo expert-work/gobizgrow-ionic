@@ -1,6 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
- 
+  
 import { Platform,ActionSheetController ,NavController,ModalController} from '@ionic/angular';
 import { Router,ActivatedRoute,NavigationExtras } from '@angular/router';
 import { ApisService,ApiImage } from '../../services/apis.service';
@@ -11,8 +10,7 @@ import { ItemsPage } from '../../common/items/items.page';
 import {  TaxesPage  } from '../../common/taxes/taxes.page';
 import { UploadPage } from '../../common/upload/upload.page'
 
-const { Camera } = Plugins;
-
+ 
  
 @Component({
   selector: 'app-new',
@@ -496,4 +494,6 @@ export class NewPage implements OnInit {
                 }  
             ) 
       }
-}
+
+
+    }

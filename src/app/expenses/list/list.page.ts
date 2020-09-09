@@ -8,21 +8,26 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.page.html',
-  styleUrls: ['./list.page.scss'],
+  styleUrls: [
+    './list.page.scss',
+    '../../style/listing.ios.scss',
+    '../../style/listing.page.scss',
+    '../../style/listing.shell.scss'
+  ],
 })
 export class ListPage implements OnInit {
 
  
   displayUserData: any;
   q:any;
-
+  loading:boolean;
   constructor(
        public actionSheetController: ActionSheetController, 
        private apisService: ApisService,
        private toastService:ToastService,
        private authService: AuthService
        ) {
-              
+          this.loading=true;    
        }
 
 
@@ -55,6 +60,7 @@ export class ListPage implements OnInit {
          form.append('q',this.q );
          form.append('auth_token',this.displayUserData.auth_token);
           this.apisService.expenses(form).subscribe((result: any) => {
+            this.loading=false; 
              if(result.data.total){
                this.page= this.page+1;
                this.items.push(...result.data.data)

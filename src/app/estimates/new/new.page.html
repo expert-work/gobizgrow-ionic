@@ -1,9 +1,432 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>new</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button> 
+
+    </ion-buttons>
+    <ion-title>{{data.estimate_number}}</ion-title>
+    <ion-button slot="end" class="button button-clear button-positive"   style="color: white;"      (click)="saveForm('DRAFT')">  
+      <ion-icon name="share"></ion-icon>
+    </ion-button>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-card style="display: none;">
+  <ion-card-content >
+        <ion-row style="padding: 15px;
+        color: #378175;
+        font-size: 16px; max-width: 600px;">
+          <ion-col>
+                <span style="border-bottom: 4px solid;"> DETAILS</span>
+          </ion-col>
+          
+          <ion-col>
+              <div> PHOTOS</div>
+          </ion-col>
+
+          <ion-col>
+              <div>YOUR NOTES</div>
+          </ion-col>
+        </ion-row>
+</ion-card-content>
+</ion-card>
+
+
+<ion-content style="--background:#f7fbfb;--padding-top: 30px;" class="form-container">
+   <ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
+  
+
+    <ion-card>
+      <ion-card-content >
+        <ion-row>
+          <ion-col class="form-column" sizeLg="3" sizeMd="3" sizeXs="12"  >
+            <label class="form-label"> Estimate Name</label>
+            <div class="input-item">
+              <ion-input type="text"  (ionInput)="updateNameChange($event)" [value]="data.name"  placeholder="Estimate Name"    autocapitalize="off" ></ion-input>
+            </div>
+          </ion-col>
+          
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="12"  >
+            <label class="form-label">Estimate Number</label>
+            <div class="input-item">
+              <ion-input type="text" readonly placeholder="Estimate Number"  value="{{data.estimate_number}}"  autocapitalize="off" ></ion-input>
+            </div> 
+          </ion-col> 
+
+
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="12"  >
+            <label class="form-label">Customer</label>
+            <div class="input-item">
+              <ion-input type="text" value={{data.customer.name}}  (click)="openCustomerModal()" readonly placeholder="Select Customer"    autocapitalize="off" ></ion-input>
+              <ion-icon name="person" style="padding-top: 8px;
+              font-size: 24px;
+              color: #378275;"></ion-icon>
+            </div>  
+          </ion-col>
+          
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="12"  >
+            <label class="form-label">Vehicle (optional)</label>
+            <div class="input-item"  >
+               <ion-select placeholder="Select Vehicle" [value]="data.customer.selectedVehicle" (ionChange) ="selectVehicle($event)">
+                    <ion-select-option *ngFor="let vehicle of data.customer.vehicles" [value]="vehicle.id">{{vehicle.make}}-{{vehicle.model}}-{{vehicle.year}}</ion-select-option>
+               </ion-select>
+                
+            </div>  
+          </ion-col>
+
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="6"  >
+            
+                    <label class="form-label"> Start Date</label>
+                    <div class="input-item" >
+                      <ion-icon name="calendar-outline" style="    font-size: 40px; color: #378275;"></ion-icon>
+                      <ion-datetime  style="width: 100%;"  displayFormat="MM/DD/YYYY"  (ionChange)="updateDateChange($event)"  [value]="data.estimate_date"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+                    </div>
+          </ion-col>
+          
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="6"  >
+            
+            <label class="form-label"> Start Time</label>
+            <div class="input-item" >
+              <ion-icon name="calendar-outline" style="    font-size: 40px; color: #378275;"></ion-icon>
+              <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"  (ionChange)="updateDateChange($event)"  [value]="data.estimate_date"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+            </div>
+         </ion-col>
+          
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="6"  >
+                  <label class="form-label"> End Date</label>
+                  <div class="input-item">
+                        <ion-icon name="calendar-outline" style="   font-size: 40px; color: #378275;"></ion-icon>
+                        <ion-datetime  style="width: 100%;"  displayFormat="MM/DD/YYYY" (ionChange)="updateDueDateChange($event)"  [value]="data.due_date"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+                  </div>
+                
+          </ion-col> 
+
+          <ion-col class="form-column"  sizeLg="3" sizeMd="3" sizeXs="6"  >
+            <label class="form-label"> End Time</label>
+            <div class="input-item">
+                  <ion-icon name="calendar-outline" style="   font-size: 40px; color: #378275;"></ion-icon>
+                  <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A" (ionChange)="updateDueDateChange($event)"  [value]="data.due_date"  placeholder=" Date From" display-timezone="utc"></ion-datetime>
+            </div>
+          
+          </ion-col> 
+
+
+          </ion-row>
+        </ion-card-content>
+  </ion-card>     
+  
+ 
+
+  <ion-card>
+    <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+    font-size: 18px;">
+      <div  style="flex:1 ;"> <ion-icon (click)="openItemsModal()" name="add"></ion-icon> </div>
+      <div style="flex:4;text-align: center; "  (click)="displayItemsBlockToggle()">
+        Add Item / Service ({{data.items.length}})
+      </div>
+      <div  style="flex:1; text-align: right;">
+               <ion-icon name="chevron-up"  *ngIf="!displayItemsBlock"    (click)="displayItemsBlockToggle()"></ion-icon>
+              <ion-icon name="chevron-down" *ngIf="displayItemsBlock"   (click)="displayItemsBlockToggle()" ></ion-icon>
+      </div>
+    </ion-card-header>
+    <ion-card-content [ngClass]="(displayItemsBlock||data.items.length)?'show':'hide'" >
+      
+      
+        <!-- ----------------------------- -->
+           <div *ngFor="let item of data.items" >
+                  <ion-card>
+                    <ion-icon name="close-outline" (click)="removeItem(item)" class="img-remove-button-shell"></ion-icon>
+
+
+                    <ion-card-header class="flex" style="    border-bottom: 1px dashed;
+                    display: flex;
+                    flex-direction: row;
+                    color: #378275;
+                    font-size: 18px;">
+                      <div style="flex:5;"> {{item.name}} </div>
+                      <div  style="flex:1; text-align: right;">  {{item.total | currency}}   </div>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-row>
+                        <ion-col class="form-column" sizeLg="6" sizeMd="6" sizeXs="6"  >
+                            <label class="form-label"> Quantity</label>
+                            <div class="input-item">
+                              <ion-input type="number" placeholder="Quantity" value={{item.quantity}}   (ionInput)="updateQuantityChange(item,$event)"  autocapitalize="off" ></ion-input>
+                            </div>
+                        </ion-col>
+                        <ion-col class="form-column" sizeLg="6" sizeMd="6" sizeXs="6"  >
+                            <label class="form-label"> Price</label>
+                            <div class="input-item">
+                                <ion-input type="number" placeholder="Price" value={{item.price}}  (ionInput)="updatePriceChange(item,$event)"   autocapitalize="off" ></ion-input>
+                            </div>
+                        </ion-col>
+                        <ion-col class="form-column" sizeLg="12" sizeMd="12" sizeXs="12">
+                            <div class="input-item">
+                                <ion-textarea (ionChange)="updateDescriptionChange(item,$event)"  value={{item.notes}}   placeholder="Enter any notes here..."></ion-textarea> 
+                            </div> 
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                </ion-card> 
+          </div>
+     
+       
+        
+        
+      
+         <ion-card>
+          <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+          font-size: 18px;">
+            <div style="flex:1;color: #378275; font-weight: 500;">  Total  </div>
+            <div  style=" flex:1;color: #378275; font-weight: 500;text-align: right;"> {{data.sub_total | currency}}</div>
+          </ion-card-header>
+        </ion-card>
+       <!-- ----------------------------- -->
+
+    </ion-card-content>
+    
+</ion-card>
+
+
+
+
+
+
+
+
+<ion-card>
+  <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+  font-size: 18px;">
+    <div> Discount ({{data.discount_val  | currency}})</div>
+    <div  style="flex:1; text-align: right;">
+     <ion-toggle  style="padding: 5px;" [checked]="((data.discount_type=='Fixed') || (data.discount_type=='Percentage'))" color="danger" (ionChange)="isDiscountToggle()"></ion-toggle>
+    </div>
+  </ion-card-header>
+  <ion-card-content *ngIf="isDiscount" >
+    <ion-row>
+      <ion-col  sizeLg="6" sizeMd="6" sizeXs="12"> </ion-col>
+      <ion-col  sizeLg="6" sizeMd="6" sizeXs="12"> 
+        <ion-row>
+          <ion-col class="form-column" sizeLg="6" sizeMd="6" sizeXs="6"> 
+              <div class="input-item">
+                  <ion-input type="number"  placeholder="discount" [value]="data.discount"     (ionInput)="updateDiscountChange($event)"  autocapitalize="off" ></ion-input>
+              </div>
+          </ion-col>
+          <ion-col class="form-column" sizeLg="6" sizeMd="6" sizeXs="6"> 
+            <div class="input-item">
+                <ion-select placeholder="Select One" [value]="data.discount_type" (ionChange) ="changeDiscountType($event)">
+                    <ion-select-option value="Fixed">Fixed</ion-select-option>
+                    <ion-select-option value="Percentage">Percentage</ion-select-option>
+                </ion-select>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+
+<ion-card>
+  <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+  font-size: 18px;">
+    <div>
+       Add/Remove Tax ({{data.total_tax  | currency}})
+    </div>
+    
+    <div  style="flex:1; text-align: right;">
+     <ion-toggle color="danger" style="padding: 5px;" [checked]="data.taxes.length"      (ionChange)="isTaxsToggle()"></ion-toggle>
+    </div>
+  </ion-card-header>
+  <ion-card-content *ngIf="isTaxs||data.taxes.length" >
+    <ion-row>
+      <ion-col  sizeLg="6" sizeMd="6" sizeXs="12">
+        <ion-button class="button button-clear button-positive" (click)="openTaxesModal()" >  
+          <ion-icon  name="add"></ion-icon> Tax
+        </ion-button>
+      </ion-col>
+      <ion-col  sizeLg="6" sizeMd="6" sizeXs="12"> 
+        <ion-row *ngFor="let tax of data.taxes" >
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="6"> 
+            <div class="form-tax-heading">{{tax.name}} ({{tax.percent}}%)</div>
+          </ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="6"> 
+            <div class="form-tax-value">{{tax.tax_amount  | currency}}</div>
+          </ion-col>
+        </ion-row>
+       </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-card>
+  <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+  font-size: 18px;">
+    <div style="flex:1;color: #3D9BFC; font-weight: 600;">  Total  </div>
+    <div  style=" flex:1;color: #3D9BFC; font-weight: 600;text-align: right;"> {{data.total | currency}} </div>
+  </ion-card-header>
+</ion-card>
+
+
+
+
+
+
+  <ion-row>
+   
+           <ion-col  sizeLg="6" sizeMd="6" sizeXs="12" style="padding:0" >
+              <ion-card>
+                <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+                font-size: 18px;">
+                   
+                  <div style="flex:5;"  (click)="displayPhotosBlockToggle()">
+                    Photos
+                  </div>
+                  <div  style="flex:1; text-align: right;">
+                           <ion-icon name="chevron-up"  *ngIf="!displayPhotosBlock"    (click)="displayPhotosBlockToggle()"></ion-icon>
+                          <ion-icon name="chevron-down" *ngIf="displayPhotosBlock"   (click)="displayPhotosBlockToggle()" ></ion-icon>
+
+                  </div>
+                </ion-card-header>
+                <ion-card-content  [ngClass]="displayPhotosBlock?'show':'hide'" >
+                  <!--  -->
+                  
+
+                  <ion-card>
+                    <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+                    font-size: 14px;">
+                      <div  style="flex:2 ;">Before Photos </div>
+                       <div  style="flex:.5; text-align: right;"> 
+                      
+                        <ion-icon  (click)="openUploadModal('Before')" name="add"></ion-icon> 
+                      </div>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-row>
+
+           
+                          <ion-col  sizeLg="4" sizeMd="4" sizeXs="4"  *ngFor="let image of data.before_photos"   >
+                            <div>
+                                <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="imageUrl(image.image)">
+                                    <app-aspect-ratio [ratio]="{w:75, h:49}">
+                                    </app-aspect-ratio>
+                                  </app-image-shell>
+                            </div>
+                              <ion-textarea [value]="image.notes" (ionInput)="updateImageNoteChange('Before',image,$event)"  placeholder="Enter any notes here..."></ion-textarea>
+                              <ion-icon name="close-outline" class="img-remove-button-shell" (click)="removeImage('Before',image)"></ion-icon>
+                          </ion-col>                          
+                      </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+                <ion-card>
+                  <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+                  font-size: 14px;">
+                    <div  style="flex:2 ;">After Photos </div>
+                     <div  style="flex:.5; text-align: right;">  <ion-icon (click)="openUploadModal('After')"  name="add"></ion-icon> </div>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-row>
+                                                 
+                      <ion-col  sizeLg="4" sizeMd="4" sizeXs="4"  *ngFor="let image of data.after_photos"   >
+                        <div>
+                            <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="imageUrl(image.image)">
+                                <app-aspect-ratio [ratio]="{w:75, h:49}">
+                                </app-aspect-ratio>
+                              </app-image-shell>
+                        </div>
+                          <ion-textarea [value]="image.notes" (ionInput)="updateImageNoteChange('After',image,$event)" placeholder="Enter any notes here..."></ion-textarea>
+                          <ion-icon name="close-outline" class="img-remove-button-shell"  (click)="removeImage('After',image)"></ion-icon>
+                      </ion-col>       
+
+                     
+
+                
+                  </ion-row>
+                  </ion-card-content>
+              </ion-card>
+
+
+              <ion-card>
+                <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+                font-size: 14px;">
+                  <div  style="flex:2 ;">Other Photos </div>
+                   <div  style="flex:.5; text-align: right;">  <ion-icon (click)="openUploadModal('Other')" name="add"></ion-icon> </div>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-row>
+                    <ion-col  sizeLg="4" sizeMd="4" sizeXs="4"  *ngFor="let image of data.other_photos"   >
+                      <div>
+                          <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="imageUrl(image.image)">
+                              <app-aspect-ratio [ratio]="{w:75, h:49}">
+                              </app-aspect-ratio>
+                            </app-image-shell>
+                      </div>
+                        <ion-textarea  placeholder="Enter any notes here..." (ionInput)="updateImageNoteChange('Other',image,$event)" [value]="image.notes" ></ion-textarea>
+                        <ion-icon name="close-outline" class="img-remove-button-shell"  (click)="removeImage('Other',image)"></ion-icon>
+                    </ion-col>                      
+                   
+                </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+
+
+
+
+                  <!--  -->
+                </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+
+
+
+
+
+
+
+          <ion-col  sizeLg="6" sizeMd="6" sizeXs="12"  style="padding:0" >
+            <ion-card>
+              <ion-card-header class="flex" style="display: flex;flex-direction: row;color: #378275;
+              font-size: 18px;">
+                 
+                <div style="flex:5;"  (click)="displayCustomerNoteBlockToggle()">
+                  Notes for Customer
+                </div>
+                <div  style="flex:1; text-align: right;">
+                         <ion-icon name="chevron-up"  *ngIf="!displayCustomerNoteBlock"    (click)="displayCustomerNoteBlockToggle()"></ion-icon>
+                        <ion-icon name="chevron-down" *ngIf="displayCustomerNoteBlock"   (click)="displayCustomerNoteBlockToggle()" ></ion-icon>
+
+                </div>
+              </ion-card-header>
+              <ion-card-content  [ngClass]="displayCustomerNoteBlock?'show':'hide'">
+                <ion-textarea  placeholder="Enter any notes here..." [value]="data.notes" (ionInput)="updateNotesChange($event)"></ion-textarea>
+              </ion-card-content>
+          </ion-card> 
+        </ion-col>          
+
+   </ion-row>
+   
+   
+   
+                <ion-row style="padding:5px">
+                  <ion-col   sizeLg="3" sizeMd="3" sizeXs="3"  >
+                    <ion-button (click)="saveForm('DRAFT')" color="primary" expand="block">Save</ion-button>
+                  </ion-col>
+                  <ion-col  sizeLg="7" sizeMd="7" sizeXs="7"  >
+                    <ion-button  (click)="saveForm('SENT')"  color="secondary" expand="block">Save & Send</ion-button>
+                  </ion-col>
+                  <ion-col   sizeLg="2" sizeMd="2" sizeXs="2"  >
+                    <ion-button  expand="block" style=" --background: #d8e7e2;;">
+                          <ion-icon style="color:#378275" name="ellipsis-vertical"></ion-icon>  
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+      
 </ion-content>

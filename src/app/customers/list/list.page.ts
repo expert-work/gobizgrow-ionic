@@ -23,6 +23,7 @@ export class ListPage implements OnInit {
   masterSelected:boolean;
   checklist:any;
   checkedList:any;
+  loading:boolean 
   constructor(
        public actionSheetController: ActionSheetController, 
        private apisService: ApisService,
@@ -30,7 +31,7 @@ export class ListPage implements OnInit {
        private authService: AuthService,
        private modalController: ModalController
        ) {
-              
+        this.loading=true; 
        }
    items = [];  
    x= 0;
@@ -59,6 +60,7 @@ export class ListPage implements OnInit {
          form.append('q',this.q );
          form.append('auth_token',this.displayUserData.auth_token);
           this.apisService.customers(form).subscribe((result: any) => {
+            this.loading=false; 
              if(result.data.total){
                this.page= this.page+1;
                this.items.push(...result.data.data)

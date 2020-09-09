@@ -6,26 +6,109 @@
     <ion-title>
       Setting
     </ion-title>
-  </ion-toolbar>
+       </ion-toolbar>
 </ion-header>
 
-<ion-content class="action-sheets-home-page">
-  <ion-list style="background: #f4f5f8;">  
-     <ion-item  lines="none"  class="list-item" [routerLink]="['/reports/sales']">
-      <p class="custom-list-p" color="primary" >Account</p>
-     </ion-item>
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/profit-loss']">
-      <p class="custom-list-p" color="primary" >Item/Services Categories</p>
-     </ion-item>
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/expenses']">
-      <p class="custom-list-p" color="primary" >Expenses Categories </p>
-     </ion-item>
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/expenses']">
-      <p class="custom-list-p" color="primary" >Payment Methods </p>
-     </ion-item>
 
-     <ion-item  lines="none"  class="list-item"  [routerLink]="['/reports/taxes']">
-      <p class="custom-list-p" color="primary" > Taxes </p>
-     </ion-item>
-  </ion-list>
+
+ 
+  
+  
+  <ion-content class="deals-listing-content">
+    <ng-container>
+      
+      <div class="listing-item"   >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="person"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Account'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> Setting your account and whateever </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    
+      <div class="listing-item"   >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="business"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Company Information'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;">All services with setting in here</span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
+      <div class="listing-item"   >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="snow"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Integrations'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> All services with setting in here </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
+      <div class="listing-item"  >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="card"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Payment Integrations'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> All services with setting in here </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
+      <div class="listing-item"   >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="server"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Services'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> All services with setting in here </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-container>
   </ion-content>
+  
+  
+   
+
+
+
+
+
+
+
+
+
+
+
+

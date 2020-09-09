@@ -19,49 +19,38 @@
       <ion-checkbox color="secondary" (click)="openMenu()" ></ion-checkbox>
     </ion-buttons>
     <ion-searchbar value={{q}} (ionInput)="searchBox($event)"    style="    min-width: 200px !important;"></ion-searchbar>
-    <ion-buttons slot="end" class="button button-clear button-positive" style="padding-right: 15px;">  
-      <ion-select placeholder="" value="f">
-        <ion-select-option value="f">All</ion-select-option>
-        <ion-select-option value="m">Draft</ion-select-option>
-        <ion-select-option value="e">Sent</ion-select-option>
-        <ion-select-option value="es">Accepted</ion-select-option>
-        <ion-select-option value="as">Decliened</ion-select-option>
-      </ion-select>
-    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
-  <ion-content color="light " class="action-sheets-home-page">  
-
-    
  
-    
- 
+  
 
-    <ion-list style="background: #f4f5f8;">  
-      <ion-item  lines="none" *ngFor="let item of items"   class="list-item">
-         
-            <div class="list-item-checkbox">
-              <ion-buttons><ion-checkbox  (click)="openMenu()" ></ion-checkbox></ion-buttons>
-            </div>
-            <div class="flex padding-5px">
-              <p class="custom-list-p" color="primary" >{{item.name}}</p>
-             </div>
-            <div class="flex padding-5px">
-              <p class="custom-list-p" color="primary" style="color:#ff0062" >{{item.amount_format}}</p>
-             </div>
-            
-            <div class="flex padding-5px">
-              <ion-icon name="options" class="list-item-option" (click)="openOptionMenu()"></ion-icon>
-            </div>
-
-        
-       </ion-item>  
-    </ion-list>  
+  <ion-content class="deals-listing-content">
+    <ng-container>
+      <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+          <ion-buttons><ion-checkbox  (click)="openMenu()"  [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}" (change)="isAllSelected()"></ion-checkbox></ion-buttons>
+          </ion-col>
+          <ion-col class="info-col" size="4">
+            <app-text-shell animation="bouncing" lines="3" [data]="item.name"></app-text-shell>
+          </ion-col>
+          <ion-col class="info-col" size="4">
+            <p class="item-description">
+              <app-text-shell animation="bouncing" lines="3" [data]="item.amount_format"></app-text-shell>
+            </p>
+          </ion-col>
+          <ion-col size="2">
+            <ion-icon name="options" class="list-item-option" (click)="openOptionMenu(item)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-container>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
       <ion-infinite-scroll-content  
         loadingSpinner="bubbles"  
         loadingText="Loading more data...">  
       </ion-infinite-scroll-content>  
     </ion-infinite-scroll>  
-  </ion-content>  
+  </ion-content>

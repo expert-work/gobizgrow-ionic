@@ -20,19 +20,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ListPage implements OnInit {
 
-  user = {
-    name: 'Simon Grimm',
-    website: 'www.ionicacademy.com',
-    address: {
-      zip: 48149,
-      city: 'Muenster',
-      country: 'DE'
-    },
-    interests: [
-      'Ionic', 'Angular', 'YouTube', 'Sports'
-    ]
-  };
  
+  loading:boolean;
   displayUserData: any;
   q:any;
   nextInvoice:any
@@ -45,7 +34,7 @@ export class ListPage implements OnInit {
        private route: ActivatedRoute,
        
        ) {
-
+         this.loading=true;
 ///page refresss start
         this.route.queryParams.subscribe(params => {
           if (this.router.getCurrentNavigation().extras.state) {
@@ -81,7 +70,9 @@ export class ListPage implements OnInit {
   newInvoice(){
     let form = new FormData();
      form.append('auth_token',this.displayUserData.auth_token);
+     this.loading=true;
                 this.apisService.nextInvoice(form).subscribe((result: any) => {
+                  this.loading=false;
                       if(result.data){
                             this.nextInvoice=result.data
                              let navigationExtras: NavigationExtras = {
@@ -90,6 +81,7 @@ export class ListPage implements OnInit {
                               }
                             };
                             this.router.navigate(['app/invoices/do'], navigationExtras);
+                            
                       } 
                 },
                   (error: any)=>{
@@ -118,6 +110,7 @@ export class ListPage implements OnInit {
          form.append('auth_token',this.displayUserData.auth_token);
           this.apisService.invoices(form).subscribe((result: any) => {
              if(result.data.total){
+              this.loading=false;
                this.page= this.page+1;
                this.items.push(...result.data.data);
                this.items= this.apisService.sortArray(this.items);

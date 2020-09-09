@@ -20,6 +20,7 @@
 
 
 <ion-row>
+  
   <ion-col>
     <div class="header-tab" style="    padding: 10px 20px;">
         <div style="border-bottom: 4px solid;"> All</div> <div>Drafts </div>
@@ -43,8 +44,9 @@
 
 
 <ion-content class="deals-listing-content">
+  <ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
 
-  <ng-container>
+  <ng-container *ngIf="!loading" >
     <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
       <ion-row class="top-row">
         <ion-col>

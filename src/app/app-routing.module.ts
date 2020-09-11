@@ -26,22 +26,7 @@ const routes: Routes = [
       m => m.SignupStepTwoPageModule
     )
   },
-  {
-    path: 'upload',
-    loadChildren: () => import('./common/upload/upload.module').then( m => m.UploadPageModule)
-  },
-  {
-    path: 'new',
-    loadChildren: () => import('./images/new/new.module').then( m => m.NewPageModule)
-  },
-  {
-    path: 'list',
-    loadChildren: () => import('./images/list/list.module').then( m => m.ListPageModule)
-  },
-  {
-    path: 'edit',
-    loadChildren: () => import('./images/edit/edit.module').then( m => m.EditPageModule)
-  },
+ 
    
   
  

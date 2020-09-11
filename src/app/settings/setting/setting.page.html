@@ -95,6 +95,55 @@
           </ion-col>
         </ion-row>
       </div>
+
+
+      <div class="listing-item"   [routerLink]="['/app/categories']" >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="star"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Categories'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> All services with setting in here </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="listing-item"   [routerLink]="['/app/expense-categories']" >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="print"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Expenses Categories'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> All services with setting in here </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="listing-item"   [routerLink]="['/app/taxes']" >
+        <ion-row class="middle-row" style="padding-top: 20px;">
+          <ion-col size="2">
+            <ion-icon class="setting-menu-icon" name="layers"></ion-icon>
+          </ion-col>
+          <ion-col class="info-col" size="9">
+            <app-text-shell animation="bouncing" lines="3" [data]="'Taxes'"></app-text-shell>
+            <span style="font-size: 14px; color: #989aa2;"> All services with setting in here </span>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon class="setting-forword" name="chevron-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
+
     </ng-container>
   </ion-content>
   

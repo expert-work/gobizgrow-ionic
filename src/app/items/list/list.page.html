@@ -38,7 +38,7 @@
         </ion-col>
         <ion-col class="info-col" size="4">
           <p class="item-description">
-            <app-text-shell animation="bouncing" lines="3" [data]="item.price_format"></app-text-shell>
+            <app-text-shell animation="bouncing" lines="3" [data]="item.price | currency "></app-text-shell>
           </p>
         </ion-col>
         <ion-col size="2">

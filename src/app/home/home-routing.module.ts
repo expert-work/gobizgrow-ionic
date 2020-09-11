@@ -27,7 +27,39 @@ const routes: Routes = [
              m => m.DashboardPageModule
            )
       },
+      {
+        path:'app/categories',
+        loadChildren: () =>
+            import('../item-categories/list/list.module').then(
+              m => m.ListPageModule
+            )
+      },
 
+
+      {
+        path:'app/expenses-categories',
+        loadChildren: () =>
+           import('../dashboard/dashboard.module').then(
+             m => m.DashboardPageModule
+           )
+      },
+
+      {
+        path:'app/taxes',
+        loadChildren: () =>
+            import('../taxes/list/list.module').then(
+              m => m.ListPageModule
+            )
+      },
+      {
+        path:'app/expense-categories',
+        loadChildren: () =>
+            import('../expense-categories/list/list.module').then(
+              m => m.ListPageModule
+            )
+      },
+
+      
       {
         path:'home',
         loadChildren: () =>

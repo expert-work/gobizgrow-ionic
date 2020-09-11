@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button> 
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Expense Categories</ion-title>
+    <ion-buttons slot="end" class="button button-clear button-positive" (click)="newModal()" >  
+      <ion-icon name="add" class="add-new"></ion-icon>
+     </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-header>
+  <ion-toolbar style="    padding-top: 15px; padding-bottom: 10px;">
+    <ion-buttons slot="start" style="padding-left: 15px;">
+      <ion-checkbox color="secondary"    [(ngModel)]="masterSelected" name="list_name" value="m1" (ionChange)="checkUncheckAll()"></ion-checkbox>
+    </ion-buttons>
+    <ion-searchbar value={{q}} (ionInput)="searchBox($event)"    style="    min-width: 200px !important;"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="deals-listing-content">
+  <ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
+
+  <ng-container *ngIf="!loading">
+     <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
+      <ion-row class="middle-row" style="padding-top: 20px;">
+        <ion-col size="2">
+        <ion-buttons>
+          <ion-buttons><ion-checkbox  [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}" (change)="isAllSelected()"></ion-checkbox></ion-buttons>
+        </ion-buttons>
+        </ion-col>
+
+        <ion-col class="info-col" size="4"> 
+          <app-text-shell animation="bouncing" lines="3" [data]="item.name"></app-text-shell>
+        </ion-col>
+        <ion-col class="info-col" size="5">
+          <p class="item-description">
+            <app-text-shell animation="bouncing" lines="3" [data]="item.description"></app-text-shell>
+          </p>
+        </ion-col>
+        <ion-col class="info-col" size="1"> 
+          <ion-icon name="create-outline" style="font-size: 24px;" color="primary" (click)="updateModal(item)" ></ion-icon>
+        </ion-col>
+        
+      </ion-row>
+    </div>
+   </ng-container>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="numTimesLeft <= 0">  
+    <ion-infinite-scroll-content  
+      loadingSpinner="bubbles"  
+      loadingText="Loading more data...">  
+    </ion-infinite-scroll-content>  
+  </ion-infinite-scroll>  
+</ion-content>
+
+ 

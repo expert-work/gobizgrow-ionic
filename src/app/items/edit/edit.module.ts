@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { EditPageRoutingModule } from './edit-routing.module';
+import { CategoriesPageModule } from '../../common/categories/categories.module'
 
 import { EditPage } from './edit.page';
 
@@ -13,7 +14,9 @@ import { EditPage } from './edit.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    EditPageRoutingModule
+    EditPageRoutingModule,
+    CategoriesPageModule,
+    ReactiveFormsModule
   ],
   declarations: [EditPage]
 })

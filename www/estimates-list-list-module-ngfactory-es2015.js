@@ -566,6 +566,9 @@ class ApisService {
     itemAdd(postData) {
         return this.httpService.post('items/add', postData);
     }
+    itemUpdate(postData) {
+        return this.httpService.post('items/edit', postData);
+    }
     taxAdd(postData) {
         return this.httpService.post('tax/add', postData);
     }
@@ -576,10 +579,10 @@ class ApisService {
         return this.httpService.post('invoices/edit', postData);
     }
     estimateAdd(postData) {
-        return this.httpService.post('invoices/add', postData);
+        return this.httpService.post('estimates/add', postData);
     }
     estimateUpdate(postData) {
-        return this.httpService.post('invoices/edit', postData);
+        return this.httpService.post('estimates/edit', postData);
     }
     //Invoices
     //Items

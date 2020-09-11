@@ -100,7 +100,7 @@ export class NewPage  {
    itemCategoryPriceUpdate(category:any,event:any){
                  let tempArray=[];
                  this.categories.map(function (item) {
-                      if(item.id =category.id){ item.price=event.target.value } 
+                      if(item.category_id ==category.category_id){ item.price=event.target.value } 
                       tempArray.push(item); 
                  });
                  this.categories=tempArray;

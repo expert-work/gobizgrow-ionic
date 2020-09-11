@@ -83,7 +83,7 @@ export class CategoriesPage implements OnInit {
               let items=[];
               this.items.map(function (item) {
                    self.categories.map(function (category) {
-                     if(item.id==category.id){
+                     if(item.id==category.category_id){
                       item.isSelected=true;
                      }
                    });
@@ -157,12 +157,13 @@ checkUncheckAll() {
     this.items.map(function (item) {
       if(item.isSelected){
                     let isAlready=false;
-                    self.categories.map(function (category) {
-                          if(item.id==category.id){ isAlready= category; }
+                     self.categories.map(function (category) {
+                          if(item.id==category.category_id){ isAlready= category; }
                       });
                       if(!isAlready){
                         categories.push({
-                          id:item.id,
+                          id: self.apisService.makeid(10),
+                          category_id:item.id,
                           name:item.name,
                           price:0
                         });

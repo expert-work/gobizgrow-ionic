@@ -1631,7 +1631,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if ("ionChange" === en) {
-          var pd_2 = _co.updateDateChange($event) !== false;
+          var pd_2 = _co.updateStartTimeChange($event) !== false;
           ad = pd_2 && ad;
         }
 
@@ -1695,7 +1695,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if ("ionChange" === en) {
-          var pd_2 = _co.updateDueDateChange($event) !== false;
+          var pd_2 = _co.updateEndTimeChange($event) !== false;
           ad = pd_2 && ad;
         }
 
@@ -2051,7 +2051,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var currVal_47 = "hh:mm A";
         var currVal_48 = " Date From";
-        var currVal_49 = _co.data.estimate_date;
+        var currVal_49 = _co.data.start_time;
 
         _ck(_v, 106, 0, currVal_47, currVal_48, currVal_49);
 
@@ -2083,7 +2083,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var currVal_61 = "hh:mm A";
         var currVal_62 = " Date From";
-        var currVal_63 = _co.data.due_date;
+        var currVal_63 = _co.data.end_time;
 
         _ck(_v, 128, 0, currVal_61, currVal_62, currVal_63);
 
@@ -2784,6 +2784,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "updateDueDateChange",
         value: function updateDueDateChange(event) {
           this.data.due_date = event.target.value;
+        }
+      }, {
+        key: "updateStartTimeChange",
+        value: function updateStartTimeChange(event) {
+          this.data.start_time = event.target.value;
+        }
+      }, {
+        key: "updateEndTimeChange",
+        value: function updateEndTimeChange(event) {
+          this.data.end_time = event.target.value;
         }
       }, {
         key: "updateDateChange",

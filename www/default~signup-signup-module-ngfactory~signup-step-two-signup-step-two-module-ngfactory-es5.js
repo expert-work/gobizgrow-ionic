@@ -277,6 +277,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.httpService.post('items/add', postData);
         }
       }, {
+        key: "itemUpdate",
+        value: function itemUpdate(postData) {
+          return this.httpService.post('items/edit', postData);
+        }
+      }, {
         key: "taxAdd",
         value: function taxAdd(postData) {
           return this.httpService.post('tax/add', postData);
@@ -294,12 +299,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "estimateAdd",
         value: function estimateAdd(postData) {
-          return this.httpService.post('invoices/add', postData);
+          return this.httpService.post('estimates/add', postData);
         }
       }, {
         key: "estimateUpdate",
         value: function estimateUpdate(postData) {
-          return this.httpService.post('invoices/edit', postData);
+          return this.httpService.post('estimates/edit', postData);
         } //Invoices
         //Items
         //Payments

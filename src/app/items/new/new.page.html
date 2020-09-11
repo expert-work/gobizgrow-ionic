@@ -41,7 +41,7 @@
       
 
       <ion-item class="input-item">
-        <ion-input type="price" placeholder="Price" formControlName="price" clearInput autocapitalize="off"></ion-input>
+        <ion-input type="number" placeholder="Price" formControlName="price" clearInput autocapitalize="off"></ion-input>
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.price">
@@ -63,7 +63,7 @@
                  <ion-col>
                   <label class="form-label"> {{category.name}} </label>
                   <div class="input-item">
-                    <ion-input type="text" placeholder="Price"  (ionInput)="itemCategoryPriceUpdate(category,$event)"   autocapitalize="off" ></ion-input>
+                    <ion-input type="number" placeholder="Price"  (ionInput)="itemCategoryPriceUpdate(category,$event)"   autocapitalize="off" ></ion-input>
                     <ion-icon style="padding: 10px 0px;font-size: 18px;" name="close" color="danger"  (click)="deleteCategory(category.id)"></ion-icon>
                   </div>              
                 </ion-col>

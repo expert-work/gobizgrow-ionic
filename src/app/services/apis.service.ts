@@ -195,15 +195,25 @@ customerEdit(auth_token:any,postData: any): Observable<any> {
 categoryAdd(postData: any): Observable<any> {
   return this.httpService.post('categories/add',postData);
 }
+
+categoryUpdate(postData: any): Observable<any> {
+  return this.httpService.post('categories/edit',postData);
+}
+
 itemAdd(postData: any): Observable<any> {
   return this.httpService.post('items/add',postData);
+}
+itemUpdate(postData: any): Observable<any> {
+  return this.httpService.post('items/edit',postData);
 }
 
 
 taxAdd(postData: any): Observable<any> {
   return this.httpService.post('tax/add',postData);
 }
-
+taxUpdate(postData: any): Observable<any> {
+  return this.httpService.post('tax/edit',postData);
+}
 
 invoiceAdd(postData: any): Observable<any> {
   return this.httpService.post('invoices/add',postData);

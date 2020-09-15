@@ -106,10 +106,15 @@ const routes: Routes = [
           loadChildren : () => import('../estimates/new/new.module').then(
             m => m.NewPageModule
           )
+        },
+        {
+          path: 'app/jobs/do',
+          loadChildren : () => import('../jobs/new/new.module').then(
+            m => m.NewPageModule
+          )
         }
   
-        
-      
+       
     ]
   }
 ];

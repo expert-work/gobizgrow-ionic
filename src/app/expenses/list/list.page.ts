@@ -3,7 +3,14 @@ import { ActionSheetController } from '@ionic/angular';
 import { ApisService } from '../../services/apis.service';
 import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../services/storage.service';
 
+import { NavParams, ModalController } from '@ionic/angular';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { EditPage  } from '../edit/edit.page';
+import { NewPage } from  '../new/new.page';
 
 @Component({
   selector: 'app-list',
@@ -17,15 +24,22 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ListPage implements OnInit {
 
- 
+  masterSelected:boolean;
+  checklist:any;
+  checkedList:any;
+  loading:boolean;
   displayUserData: any;
   q:any;
-  loading:boolean;
-  constructor(
+   constructor(
        public actionSheetController: ActionSheetController, 
        private apisService: ApisService,
        private toastService:ToastService,
-       private authService: AuthService
+       public router: Router,
+       public menu: MenuController,
+       private authService: AuthService,
+       private storageService: StorageService,
+       public modalController: ModalController
+
        ) {
           this.loading=true;    
        }
@@ -54,6 +68,77 @@ export class ListPage implements OnInit {
       event.target.complete();  
     }, 500);  
   }  
+
+
+
+
+
+ async newModal() {
+  const modal = await this.modalController.create({
+     component: NewPage,
+     backdropDismiss:false
+  });
+  modal.onDidDismiss().then(data=>{
+     if(data.data)
+     if(this.apisService.isDefined(data.data.id)){
+        this.items.push(data.data)
+        this.items=this.apisService.sortArray(this.items);
+     }
+  })
+  return await modal.present();
+}
+
+
+async updateModal(data:any) {
+  const modal = await this.modalController.create({
+     componentProps: { data: data },
+     component: EditPage,
+     backdropDismiss:false
+  });
+  modal.onDidDismiss().then(data=>{
+     if(data.data)
+     if(this.apisService.isDefined(data.data.id)){
+       
+       let tempArray=[];
+        this.items.map(function (item) {
+          if(item.id == data.data.id){ tempArray.push(data.data); } else {tempArray.push(item); }
+        });
+        this.items=this.apisService.sortArray(tempArray);
+     }
+  })
+  return await modal.present();
+}
+
+
+//EditPage
+
+checkUncheckAll() {
+  for (var i = 0; i < this.items.length; i++) {
+    this.items[i].isSelected = this.masterSelected;
+  }
+  this.getCheckedItemList();
+}
+
+  isAllSelected() {
+    this.masterSelected = this.items.every(function(item:any) {
+        return item.isSelected == true;
+      })
+    this.getCheckedItemList();
+  }
+
+  getCheckedItemList(){
+    this.checkedList = [];
+    for (var i = 0; i < this.items.length; i++) {
+      if(this.items[i].isSelected)
+      this.checkedList.push(this.items[i].id);
+    }
+    this.checkedList = JSON.stringify(this.checkedList);
+    return this.checkedList;
+  }
+
+
+
+
   addMoreItems() {  
      let form = new FormData();
          form.append('page',this.page.toString() );
@@ -107,7 +192,7 @@ export class ListPage implements OnInit {
   }  
 
 
-  async openOptionMenu() {  
+  async openOptionMenu(item) {  
     const actionSheet = await this.actionSheetController.create({  
      // header: 'Action',  
       buttons: [ 
@@ -115,6 +200,7 @@ export class ListPage implements OnInit {
           text: 'Update',  
            handler: () => {  
             console.log('Destructive clicked');  
+            this.updateModal(item);
           }  
         }, 
         {  

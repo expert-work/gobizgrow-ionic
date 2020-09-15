@@ -17,6 +17,24 @@
     font-weight: 400;
     padding-left: 20px;">Home</h3>
     <ion-row>
+
+
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/estimates']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="document-text"></ion-icon></div>
+          <p class="grid-heading">Estimate</p>
+          <p class="grid-description">{{Estimate}} Estimation</p>
+         </div>
+      </ion-col>
+
+      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/jobs']">
+        <div class="grid-div">
+          <div class="grid-icon-div"><ion-icon class="grid-icon" name="newspaper"></ion-icon></div>
+          <p class="grid-heading">Job</p>
+          <p class="grid-description">{{Job}} Jobs</p>
+         </div>
+      </ion-col>
+
       <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/invoices']" >
         <div class="grid-div">
           <div class="grid-icon-div"><ion-icon class="grid-icon" name="document"></ion-icon></div>
@@ -33,13 +51,6 @@
          </div>
       </ion-col>
 
-      <ion-col style="padding:20px" sizeLg="3" sizeMd="3" sizeXs="6" [routerLink]="['/app/estimates']">
-        <div class="grid-div">
-          <div class="grid-icon-div"><ion-icon class="grid-icon" name="document-text"></ion-icon></div>
-          <p class="grid-heading">Estimate</p>
-          <p class="grid-description">{{Estimate}} Estimation</p>
-         </div>
-      </ion-col>
 
       
   

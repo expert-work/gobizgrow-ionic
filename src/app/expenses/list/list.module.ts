@@ -9,13 +9,18 @@ import { ListPageRoutingModule } from './list-routing.module';
 import { ListPage } from './list.page';
 import { ComponentsModule } from '../../components/components.module';
 
+import { NewPageModule } from '../new/new.module';
+import { EditPageModule } from '../edit/edit.module'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ListPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NewPageModule,
+    EditPageModule
   ],
   declarations: [ListPage]
 })

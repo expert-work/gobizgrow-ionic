@@ -158,6 +158,12 @@ nextEstimate(postData: any): Observable<any> {
   return this.httpService.post('estimates/next',postData);
 
 }
+nextJob(postData: any): Observable<any> {
+  return this.httpService.post('jobs/next',postData);
+
+}
+
+
 
 items(postData: any): Observable<any> {
   return this.httpService.post('items/all',postData);
@@ -173,6 +179,14 @@ payments(postData: any): Observable<any> {
 expenses(postData: any): Observable<any> {
   return this.httpService.post('expenses/all',postData);
 }
+
+jobs(postData: any): Observable<any> {
+  return this.httpService.post('jobs/all',postData);
+}
+expenseCategories(postData: any): Observable<any> {
+  return this.httpService.post('expenses-categories/all',postData);
+}
+
 
 taxes(postData: any): Observable<any> {
   return this.httpService.post('taxes/all',postData);
@@ -233,6 +247,14 @@ estimateUpdate(postData: any): Observable<any> {
   return this.httpService.post('estimates/edit',postData);
 }
 
+
+jobAdd(postData: any): Observable<any> {
+  return this.httpService.post('jobs/add',postData);
+}
+
+jobUpdate(postData: any): Observable<any> {
+  return this.httpService.post('jobs/edit',postData);
+}
  //Invoices
  //Items
  //Payments
@@ -242,8 +264,15 @@ estimateUpdate(postData: any): Observable<any> {
  //Taxes
  //Payment Merhods
 
+ 
+ expenseCategoryUpdate(postData: any): Observable<any> {
+  return this.httpService.post('expenses-categories/edit',postData);
+}
 
+expenseCategoryAdd(postData: any): Observable<any> {
+  return this.httpService.post('expenses-categories/add',postData);
 
+}
 
  // get Industries industries
   industries(postData: any): Observable<any> {

@@ -71,7 +71,7 @@ export class ListPage implements OnInit {
         form.append('page',this.page.toString() );
         form.append('q',this.q );
         form.append('auth_token',this.displayUserData.auth_token);
-         this.apisService.categories(form).subscribe((result: any) => {
+         this.apisService.expenseCategories(form).subscribe((result: any) => {
           this.loading=false;
             if(result.data.total){
               this.page= this.page+1;

@@ -28,11 +28,17 @@
                 Dashboard
               </ion-label>
             </ion-item>
-
-            <ion-item [routerLink]="['/app/customers']">
-              <ion-icon slot="start" name="people"></ion-icon>
+            <ion-item [routerLink]="['/app/estimates']">
+              <ion-icon slot="start" name="document-text"></ion-icon>
               <ion-label>
-                Customers
+                Estimate
+              </ion-label>
+            </ion-item>
+
+            <ion-item [routerLink]="['/app/jobs']">
+              <ion-icon slot="start" name="newspaper"></ion-icon>
+              <ion-label>
+                Job
               </ion-label>
             </ion-item>
 
@@ -43,12 +49,16 @@
               </ion-label>
             </ion-item>
 
-            <ion-item [routerLink]="['/app/estimates']">
-              <ion-icon slot="start" name="document-text"></ion-icon>
+            <ion-item [routerLink]="['/app/customers']">
+              <ion-icon slot="start" name="people"></ion-icon>
               <ion-label>
-                Estimate
+                Customers
               </ion-label>
             </ion-item>
+
+            
+
+
 
             <ion-item [routerLink]="['/app/items']">
               <ion-icon slot="start" name="star"></ion-icon>

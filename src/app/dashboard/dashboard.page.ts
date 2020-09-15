@@ -16,6 +16,7 @@ export class DashboardPage implements OnInit {
     Item:any;
     Payment:any
     Expense:any
+    Job:any
     displayUserData: any;
     loading:boolean
   constructor(
@@ -30,6 +31,7 @@ export class DashboardPage implements OnInit {
         this.Item=0;
         this.Payment=0;
         this.Expense=0;
+        this.Job=0;
         this.loading=true
               
        }
@@ -52,6 +54,9 @@ export class DashboardPage implements OnInit {
                   this.Item=result.data.Item;
                   this.Payment=result.data.Payment;
                   this.Expense=result.data.Expense;
+                  this.Job=result.data.Job;
+
+                  
                 }else{
    
                 }

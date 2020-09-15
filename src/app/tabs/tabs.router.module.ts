@@ -79,6 +79,13 @@ const routes: Routes = [
         import('../settings/setting/setting.module').then(
           m => m.SettingPageModule
         )
+      },
+      {
+        'path':'jobs',
+        loadChildren:()=>
+        import('../jobs/list/list.module').then(
+          m=>m.ListPageModule
+        )
       }
 
     ]

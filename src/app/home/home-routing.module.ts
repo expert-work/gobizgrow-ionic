@@ -112,7 +112,11 @@ const routes: Routes = [
           loadChildren : () => import('../jobs/new/new.module').then(
             m => m.NewPageModule
           )
-        }
+        },
+        {
+          path: 'settings/account-information',
+          loadChildren: () => import('../settings/account-information/account-information.module').then( m => m.AccountInformationPageModule)
+        },
   
        
     ]

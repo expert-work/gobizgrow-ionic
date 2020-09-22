@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button> 
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Account Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  <ion-card-content >
+        <ion-row style="padding: 15px;
+        color: #378175;
+        font-size: 16px; max-width: 600px;">
+          <ion-col (click)="updateActiveTab('account');" style="cursor: pointer;">
+                <span [class]="(isActiveTab=='account')?'active-tab':''"> Account</span>
+          </ion-col>
+          
+          <ion-col (click)="updateActiveTab('password');" style="cursor: pointer;">
+              <span [class]="(isActiveTab=='password')?'active-tab':''"> Chnage Password</span>
+          </ion-col>
+
+           
+        </ion-row>
+</ion-card-content>
+</ion-card>
+
+
+
+<ion-content *ngIf="isActiveTab=='account'">
+  <div  class="dispplay-content-center">
+    <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+      <ion-list class="inputs-list" lines="full">
+        <span>Account</span>
+        </ion-list>
+      </form>
+    
+   </div>
+</ion-content>
+
+<ion-content *ngIf="isActiveTab=='password'">
+  <div  class="dispplay-content-center">
+    <span>Password</span>
+  </div>
+</ion-content>

@@ -6,7 +6,7 @@ import { ComponentsModule } from '../../components/components.module';
 import { NewPageRoutingModule } from './new-routing.module';
 
 import { NewPage } from './new.page';
-import { VehiclePageModule} from '../../customers/vehicle/vehicle.module';
+import { ExpenseCategoriesPageModule } from '../../common/expense-categories/expense-categories.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +14,7 @@ import { VehiclePageModule} from '../../customers/vehicle/vehicle.module';
     IonicModule,
     ReactiveFormsModule,
     NewPageRoutingModule,
-    VehiclePageModule,
+    ExpenseCategoriesPageModule,
     ComponentsModule
   ],
   declarations: [NewPage]

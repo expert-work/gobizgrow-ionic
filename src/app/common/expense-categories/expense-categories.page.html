@@ -28,12 +28,12 @@
   <ion-spinner  *ngIf="loading" class="loading" name="crescent" color="primary"></ion-spinner>
 
   <ng-container *ngIf="!loading">
-    <ion-radio-group value={{customer.id}}>
+    <ion-radio-group value={{category.id}}>
     <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
       <ion-row class="middle-row" style="padding-top: 20px;">
         <ion-col size="2">
         <ion-buttons>
-          <ion-radio  value={{item.id}} (click)="selectCustomer(item)"></ion-radio>
+          <ion-radio  value={{item.id}} (click)="selectCategory(item)"></ion-radio>
         </ion-buttons>
         </ion-col>
         <ion-col class="info-col" size="5"> 
@@ -41,7 +41,7 @@
         </ion-col>
         <ion-col class="info-col" size="5">
           <p class="item-description">
-            <app-text-shell animation="bouncing" lines="3" [data]="item.email"></app-text-shell>
+            <app-text-shell animation="bouncing" lines="3" [data]="item.description"></app-text-shell>
           </p>
         </ion-col>
       </ion-row>
@@ -60,7 +60,7 @@
   <ion-toolbar>
     <ion-row>
        <ion-col>
-        <ion-button expand="full" fill="outline" (click)="updateSelectedCusromer()">Update Selected Customer</ion-button>
+        <ion-button expand="full" fill="outline" (click)="updateSelectedCategory()">Update Selected Category</ion-button>
       </ion-col>
     </ion-row>
           

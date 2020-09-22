@@ -134,15 +134,20 @@
 }
 
 // Custom CSS BY G Ashish 
- h3.info-title {
-  color:white!important;
+ 
+  h3.info-title  {
+  margin-top: 40px;
+  color: #222428 !important;
   text-align: center;
+  margin-bottom: -10px;
+  font-size: 30px;
+  padding: 0 50px;
+  font-weight: 400;
 }
-
 .skip-walkthrough-button {
   font-size: 14px !important;
   color: red;
  }
 .ion-color-primary{
-  --ion-color-base: #378074 !important;
+  --ion-color-base:#53B574 !important;
 }

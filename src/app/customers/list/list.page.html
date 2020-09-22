@@ -29,20 +29,29 @@
   <ng-container *ngIf="!loading">
     <div class="listing-item"  [ngClass]="ended"  *ngFor="let item of items">
       <ion-row class="middle-row" style="padding-top: 20px;">
+        
         <ion-col size="2">
         <ion-buttons><ion-checkbox  (click)="openMenu()"  [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}" (change)="isAllSelected()"></ion-checkbox></ion-buttons>
         </ion-col>
-        <ion-col class="info-col" size="4">
+
+
+        <ion-col class="info-col" size="8">
           <app-text-shell animation="bouncing" lines="3" [data]="item.name"></app-text-shell>
-        </ion-col>
-        <ion-col class="info-col" size="4">
-          <p class="item-description">
+          <p class="item-description"  style="color:black;    font-weight: 300;">
             <app-text-shell animation="bouncing" lines="3" [data]="item.email"></app-text-shell>
           </p>
+          <p class="item-description" style="color:black;    font-weight: 300;">
+            <app-text-shell animation="bouncing" lines="3" [data]="item.phone"></app-text-shell>
+          </p>
+
         </ion-col>
+
+       
+
         <ion-col size="2">
-          <ion-icon name="options" class="list-item-option" (click)="openActionMenu(item)"></ion-icon>
-        </ion-col>
+          <ion-icon style="font-size: 20px; margin-top: 10px;" name="chevron-forward" color="primary" (click)="openActionMenu(item)" ></ion-icon>
+         </ion-col>
+
       </ion-row>
     </div>
   </ng-container>

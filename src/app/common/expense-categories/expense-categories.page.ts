@@ -9,7 +9,7 @@ import { ApisService } from '../../services/apis.service'
 
 import { StorageService } from '../../services/storage.service';
 import { ToastService } from '../../services/toast.service';
-import { NewPage } from '../../customers/new/new.page'
+import { NewPage } from '../../expense-categories/new/new.page'
 
 
 @Component({
@@ -24,7 +24,7 @@ import { NewPage } from '../../customers/new/new.page'
 })
 export class ExpenseCategoriesPage implements OnInit {
   displayUserData:any;
-  customer:any;
+  category:any;
   loading:boolean;
   constructor(
     public router: Router,
@@ -36,10 +36,10 @@ export class ExpenseCategoriesPage implements OnInit {
     navParams: NavParams,
     public modalController: ModalController
   ) {
-    this.customer=navParams.get('data');
+    this.category=navParams.get('data');
 
     console.log('popup open start');
-    console.log(this.customer);
+    console.log(this.category);
     console.log('popup open end');
     this.loading=true;
 
@@ -73,7 +73,7 @@ export class ExpenseCategoriesPage implements OnInit {
         form.append('page',this.page.toString() );
         form.append('q',this.q );
         form.append('auth_token',this.displayUserData.auth_token);
-         this.apisService.customers(form).subscribe((result: any) => {
+         this.apisService.expenseCategories(form).subscribe((result: any) => {
           this.loading=false;
             if(result.data.total){
               this.page= this.page+1;
@@ -115,13 +115,24 @@ export class ExpenseCategoriesPage implements OnInit {
   return await modal.present();
 }
 
-  selectCustomer(item){
-    this.customer= item;  
+  selectCategory(item){
+    item.expense_category_id=item.id;
+    // if(item.id !=this.category.expense_category_id){
+    //   item.expense_category_id=item.id;
+    //   item.id=this.apisService.makeid(10);
+    // }else{
+    //   item.expense_category_id=item.id;
+    //   item.id=this.category.id;
+    // }
+    this.category= item;  
     
   }
 
- updateSelectedCusromer(){
-  this.modalController.dismiss(this.customer);
+ updateSelectedCategory(){
+   if(this.apisService.isDefined(this.category.name)){
+      this.modalController.dismiss(this.category);
+   }
+ 
  }
    close() { this.modalController.dismiss([]);  }
 

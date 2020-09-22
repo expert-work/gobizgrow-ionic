@@ -23,9 +23,12 @@ ion-header {
 
     // For the skip button
     ion-button {
-      --color: var(--ion-color-lightest);
+      --color: #2DB65B;
     }
   }
+}
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0;
 }
 
 ion-content {
@@ -206,11 +209,6 @@ ion-content {
 
 
 
-.swiper-wrapper h3.info-title {
-  color:white;
-  text-align: center;
-}
-
 ion-row.slide-inner-row.md.hydrated {
  background: #12876F;
 
@@ -226,9 +224,23 @@ ion-row.slide-inner-row.md.hydrated {
     bottom: calc((var(--page-swiper-pagination-space) - var(--page-swiper-pagination-height) ) / 2);
 
     .swiper-pagination-bullet {
-      background: white;
+      background: #2DB65B;
       width: var(--page-pagination-bullet-size);
       height: var(--page-pagination-bullet-size);
     }
   }
 }
+
+
+
+.walkthrough-images{
+   border-radius: 20px;
+  background: #F1F1F1;
+  max-width: 250px;
+  padding: 50px;
+  }
+
+  .header-md::after {
+    display: none;
+  }
+

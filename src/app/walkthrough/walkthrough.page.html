@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header  no-border>
+  <ion-toolbar style="--background-color:white"  no-border>
     <ion-buttons slot="start">
      </ion-buttons>
     <ion-title>
@@ -10,66 +10,96 @@
   </ion-toolbar>
 </ion-header>
 
+ 
+
 
 
 <ion-content>
   <ion-slides class="walkthrough-slides" pager="true" [options]="slidesOptions" >
-    <ion-slide   style="flex-direction: column; padding-top: 50px;   background: #378175;" class="first-slide illustration-and-decoration-slide">
+ 
+    <ion-slide   style="flex-direction: column;  " class="first-slide illustration-and-decoration-slide">
          <ion-col  style="    flex: 5;display: flex;
          align-items: center;
          text-align: center;
          justify-content: center;
          background: white;
          flex-direction: column;">
-          <ion-img class="auth-logo" [src]="'./assets/logo/logo.png'" [alt]="'walkthrough'"></ion-img>
-            
+          <ion-img class="walkthrough-images" [src]="'./assets/onboarding/economy-forecast.png'" [alt]="'walkthrough'"></ion-img>
+          <h3 class="info-title"> Easy Estimates and Invoices </h3>
           <p  class="home-slider-description">
-          Software made specifically for your business. Super simple to use, all the tools and information you need, all in one simple and easy to use app.
-          </p>
-          <ion-button color="primary" [routerLink]="['/auth/login']" >Get Started</ion-button>
-
-        </ion-col>
-       
-        
-        <ion-col  style="display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        justify-content: center;">
-         <h3 class="info-title">Made for Auto Techs & Detailers.
-          Simple to use.</h3>
+            Easily create estiamtes, jobs & invoices in seconds.
+            </p>
+          <ion-button color="primary" [routerLink]="['/auth/login']" style="width: 300px;" ><span style="float:right;    margin-right: 60px;">Create first invoice</span>     <ion-icon style="color:white;float:right" name="arrow-forward"></ion-icon>   </ion-button>
         </ion-col>
      </ion-slide>
-   
- 
-     
-
-    <ion-slide   style="flex-direction: column; padding-top: 50px;   background: #378175;" class="last-slide illustration-and-decoration-slide">
+  
+     <ion-slide   style="flex-direction: column;  " class="first-slide illustration-and-decoration-slide">
       <ion-col  style="    flex: 5;display: flex;
       align-items: center;
       text-align: center;
       justify-content: center;
       background: white;
       flex-direction: column;">
-       <ion-img class="auth-logo" [src]="'./assets/logo/logo.png'" [alt]="'walkthrough'"></ion-img>
-         
+       <ion-img class="walkthrough-images" [src]="'./assets/onboarding/invoice.png'" [alt]="'walkthrough'"></ion-img>
+       <h3 class="info-title">Capture Payments Simply </h3>
        <p  class="home-slider-description">
-          Tools and features made specifically to make your life easier & business thrive.
-      </p>
-       <ion-button color="primary" [routerLink]="['/auth/login']" >Get Started</ion-button>
-
-     </ion-col>
-    
-     
-     <ion-col  style="display: flex;
-     flex-direction: column;
-     align-items: center;
-     text-align: center;
-     justify-content: center;">
-      <h3 class="info-title">Made Specifically for Your Industry &
-        Your Size.</h3>
+        You can easily take payments for your work, all within the app
+         </p>
+       <ion-button color="primary" [routerLink]="['/auth/login']" style="width: 300px;" ><span style="float:right;    margin-right: 60px;">Create first invoice</span>     <ion-icon style="color:white;float:right" name="arrow-forward"></ion-icon>   </ion-button>
      </ion-col>
   </ion-slide>
+
+  <ion-slide   style="flex-direction: column;  " class="first-slide illustration-and-decoration-slide">
+    <ion-col  style="    flex: 5;display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: white;
+    flex-direction: column;">
+     <ion-img class="walkthrough-images" [src]="'./assets/onboarding/comment.png'" [alt]="'walkthrough'"></ion-img>
+     <h3 class="info-title"> Easy Communication </h3>
+     <p  class="home-slider-description">
+      Easily connect with your customers through automated messages.
+       </p>
+     <ion-button color="primary" [routerLink]="['/auth/login']" style="width: 300px;" ><span style="float:right;    margin-right: 60px;">Create first invoice</span>     <ion-icon style="color:white;float:right" name="arrow-forward"></ion-icon>   </ion-button>
+   </ion-col>
+</ion-slide>
+
+<ion-slide   style="flex-direction: column;  " class="first-slide illustration-and-decoration-slide">
+  <ion-col  style="    flex: 5;display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: white;
+  flex-direction: column;">
+   <ion-img class="walkthrough-images" [src]="'./assets/onboarding/review.png'" [alt]="'walkthrough'"></ion-img>
+   <h3 class="info-title"> Get Reviews &  More Busienss </h3>
+   <p  class="home-slider-description">
+    We help you get more reviews and generate more money.
+     </p>
+   <ion-button color="primary" [routerLink]="['/auth/login']" style="width: 300px;" ><span style="float:right;    margin-right: 60px;">Create first invoice</span>     <ion-icon style="color:white;float:right" name="arrow-forward"></ion-icon>   </ion-button>
+ </ion-col>
+</ion-slide>
+
+
+<ion-slide   style="flex-direction: column;  " class="first-slide illustration-and-decoration-slide">
+  <ion-col  style="    flex: 5;display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: white;
+  flex-direction: column;">
+   <ion-img class="walkthrough-images" [src]="'./assets/onboarding/process.png'" [alt]="'walkthrough'"></ion-img>
+   <h3 class="info-title"> Job Flow  Management </h3>
+   <p  class="home-slider-description">
+    Easily manage all your estimates, jobs, and invoices in one place
+     </p>
+   <ion-button color="primary" [routerLink]="['/auth/login']" style="width: 300px;" ><span style="float:right;    margin-right: 60px;">Create first invoice</span>     <ion-icon style="color:white;float:right" name="arrow-forward"></ion-icon>   </ion-button>
+ </ion-col>
+</ion-slide>
+
+ 
+  
 
   </ion-slides>
 </ion-content>

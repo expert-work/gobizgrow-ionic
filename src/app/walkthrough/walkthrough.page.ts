@@ -16,6 +16,13 @@ export class WalkthroughPage implements AfterViewInit {
     zoom: {
       toggle: false // Disable zooming to prevent weird double tap zomming on slide images
     },
+    grabCursor: true,
+    cubeEffect: {
+      shadow: true,
+      slideShadows: true,
+      shadowOffset: 20,
+      shadowScale: 0.94,
+    },
     coverflowEffect: {
       rotate: 50,
       slideShadows: true,
@@ -23,6 +30,7 @@ export class WalkthroughPage implements AfterViewInit {
   };
 
   slideOpts = {
+
     initialSlide: 1,
     speed: 400
   };
@@ -36,12 +44,12 @@ export class WalkthroughPage implements AfterViewInit {
 
   // Disable side menu for this page
   ionViewDidEnter(): void {
-    this.menu.enable(false);
+   // this.menu.enable(false);
   }
 
   // Restore to default when leaving this page
   ionViewDidLeave(): void {
-    this.menu.enable(true);
+   // this.menu.enable(true);
   }
 
   ngAfterViewInit(): void {
@@ -50,16 +58,16 @@ export class WalkthroughPage implements AfterViewInit {
      // this.isFirstSlide = isBeginning;
     });
     this.slides.isEnd().then(isEnd => {
-      this.isLastSlide = isEnd;
+     // this.isLastSlide = isEnd;
     });
 
     // Subscribe to changes
     this.slides.ionSlideWillChange.subscribe(changes => {
       this.slides.isBeginning().then(isBeginning => {
-       // this.isFirstSlide = isBeginning;
+      //  this.isFirstSlide = isBeginning;
       });
       this.slides.isEnd().then(isEnd => {
-        this.isLastSlide = isEnd;
+       // this.isLastSlide = isEnd;
       });
     });
   }

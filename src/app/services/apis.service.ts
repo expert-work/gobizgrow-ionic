@@ -255,6 +255,17 @@ jobAdd(postData: any): Observable<any> {
 jobUpdate(postData: any): Observable<any> {
   return this.httpService.post('jobs/edit',postData);
 }
+
+expensesAdd(postData: any): Observable<any> {
+  return this.httpService.post('expenses/add',postData);
+
+}
+
+expensesUpdate(postData: any): Observable<any> {
+  return this.httpService.post('expenses/edit',postData);
+
+}
+
  //Invoices
  //Items
  //Payments

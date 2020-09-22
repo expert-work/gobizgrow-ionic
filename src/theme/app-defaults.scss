@@ -35,11 +35,11 @@
 }
 .home-slider-description {
   max-width: 700px;
-  color: #3a876f;
-   padding: 0 50px;
-  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);;
+  padding: 0 50px;
+  font-size: 18px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
 }
 .add-new{
     color: white;
@@ -256,7 +256,7 @@ ion-icon {
 
 app-text-shell.DRAFT {
   float: right;
-  background: #3880ff !important;
+  background: grey !important;
   color: white !important;
   font-weight: 600;
   font-size: 12px;
@@ -279,7 +279,7 @@ app-text-shell.SENT {
 
 app-text-shell.COMPLETED {
   float: right;
-  background: #378175 !important;
+  background: green !important;
   color: white !important;
   font-weight: 600;
   font-size: 12px;
@@ -291,7 +291,7 @@ app-text-shell.COMPLETED {
 }
 app-text-shell.PARTIAL.PAID {
   float: right;
-  background: #259abf !important;
+  background: orange !important;
   color: white !important;
   font-weight: 600;
   font-size: 12px;
@@ -312,6 +312,11 @@ app-text-shell.ACCEPTED {
   text-align: center;
   border-radius: 14px;
   padding: 5px;
+}
+
+
+span.active-tab {
+  border-bottom: 4px solid;
 }
 @media screen and (min-width: 640px) {
   .custom-list-p{

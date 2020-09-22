@@ -43,7 +43,7 @@
 
       
       <ion-item class="input-item">
-        <ion-input type="text" placeholder="Expense Category" formControlName="expense_category_name" readonly="true" clearInput autocapitalize="off" ></ion-input>
+        <ion-input type="text" placeholder="Expense Category" value="{{expenses_category.name}}" formControlName="expense_category_name" (click)="openExpenseCategoriesModal()" readonly="true" clearInput autocapitalize="off" ></ion-input>
       </ion-item>
       <div class="error-container">
         <ng-container *ngFor="let validation of validation_messages.expense_category_name">

@@ -9,7 +9,7 @@ import { ApisService } from '../../services/apis.service'
 
 import { StorageService } from '../../services/storage.service';
 import { ToastService } from '../../services/toast.service';
-import { VehiclePage} from '../../customers/vehicle/vehicle.page'
+import { ExpenseCategoriesPage } from '../../common/expense-categories/expense-categories.page'
 
 
 
@@ -26,13 +26,13 @@ export class NewPage  {
   displayUserData: any; 
   expense_date:any;
   vehicles_json_data=[];
-
+  expenses_category:any;
   validation_messages = {
     'expense_date': [
       { type: 'required', message: 'Date is required.' },
      ],
     'amount': [
-      { type: 'required', message: 'Email is required.' },
+      { type: 'required', message: 'amount is required.' },
      ],
      'expense_category_name': [
       { type: 'required', message: 'Category is required.' },
@@ -52,6 +52,8 @@ export class NewPage  {
     navParams: NavParams,
     public modalController: ModalController
   ) {
+    this.expenses_category=[];
+     this.expenses_category.name='';
 
     this.form = new FormGroup({
       'amount': new FormControl('', Validators.compose([
@@ -82,12 +84,14 @@ export class NewPage  {
      let form = new FormData();
      form.append('amount', this.form.value.amount);
      form.append('expense_date', this.form.value.expense_date);
-    
      form.append('notes', this.form.value.notes);
+     form.append('expense_category_id', this.expenses_category.expense_category_id);
+
+     
      form.append('auth_token',this.displayUserData.auth_token);
  
      
-    this.apisService.customerAdd(form).subscribe((result: any) => {
+    this.apisService.expensesAdd(form).subscribe((result: any) => {
       this.desabled=false;
                 this.toastService.presentToast('Successfully added');
                 console.log(result.data);
@@ -107,25 +111,19 @@ export class NewPage  {
 
  
 
-  async openVehicleModal() {
+  async openExpenseCategoriesModal() {
     let data={
       id:this.apisService.makeid(10),
-      make:'',
-      model:'',
-      year:'',
-      color:'',
-      mileage:'',
-      notes:'',
+       
     }
     const modal = await this.modalController.create({
-      component: VehiclePage,
+      component: ExpenseCategoriesPage,
        componentProps: { data: data },
        backdropDismiss:false
     });
     modal.onDidDismiss().then(data=>{
         if(this.apisService.isDefined(data.data.id)){
-          this.vehicles_json_data.push(data.data)
-          this.vehicles_json_data=this.apisService.sortArray(this.vehicles_json_data);
+          this.expenses_category=(data.data);
        }
    
    
@@ -134,31 +132,8 @@ export class NewPage  {
   }
 
   
-  async editVehicleModal(data) {
-    const modal = await this.modalController.create({
-      component: VehiclePage,
-       componentProps: { data: data },
-       backdropDismiss:false
-    });
-    modal.onDidDismiss().then(data=>{
-        if(this.apisService.isDefined(data.data.id)){
-          let tempArray=[];
-          this.vehicles_json_data.map(function (item) {
-            if(item.id ==data.data.id){ tempArray.push(data.data);  } else {tempArray.push(item); }
-          });
-          this.vehicles_json_data=tempArray;
-       }
-    })
-    return await modal.present();
-  }
-  
-  deleteVehicle(id : Number){
-    let tempArray=[];
-    this.vehicles_json_data.map(function (item) {
-      if(item.id !=id){ tempArray.push(item);  }
-    });
-    this.vehicles_json_data=tempArray;
-  }
+ 
+ 
 
   close()
   {

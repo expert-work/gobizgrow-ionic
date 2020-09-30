@@ -11,8 +11,7 @@
 
 <ion-card>
   <ion-card-content >
-        <ion-row style="padding: 15px;
-        color: #378175;
+        <ion-row style="color: #378175;
         font-size: 16px; max-width: 600px;">
           <ion-col (click)="updateActiveTab('account');" style="cursor: pointer;">
                 <span [class]="(isActiveTab=='account')?'active-tab':''"> Account</span>
@@ -30,18 +29,179 @@
 
 
 <ion-content *ngIf="isActiveTab=='account'">
-  <div  class="dispplay-content-center">
+  <div  class="">
     <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
       <ion-list class="inputs-list" lines="full">
-        <span>Account</span>
-        </ion-list>
-      </form>
+  
+  
+        <ion-row>
+            <ion-col class="form-column"   >
+              <label class="form-label"> Account Status</label>
+                <div class="input-item">
+                  <ion-input type="text" placeholder="Pending" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                </div>
+            </ion-col>
+
+            <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+              <ng-container *ngFor="let validation of validation_messages.title">
+                <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="form-column"   >
+            <label class="form-label"> First Name</label>
+              <div class="input-item">
+                <ion-input type="text" placeholder="First Name" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+              </div>
+          </ion-col>
+
+          <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+            <ng-container *ngFor="let validation of validation_messages.title">
+              <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col class="form-column"   >
+          <label class="form-label"> Last Name</label>
+            <div class="input-item">
+              <ion-input type="text" placeholder="Last Name" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+            </div>
+        </ion-col>
+
+        <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+          <ng-container *ngFor="let validation of validation_messages.title">
+            <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col class="form-column"   >
+        <label class="form-label"> Phone Number</label>
+          <div class="input-item">
+            <ion-input type="text" placeholder="Phone Number" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+          </div>
+      </ion-col>
+
+      <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+        <ng-container *ngFor="let validation of validation_messages.title">
+          <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="form-column"   >
+      <label class="form-label"> Email</label>
+        <div class="input-item">
+          <ion-input type="text" placeholder="Email" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+        </div>
+    </ion-col>
+
+    <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+      <ng-container *ngFor="let validation of validation_messages.title">
+        <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <span>{{ validation.message }}</span>
+        </div>
+      </ng-container>
+    </div>
+</ion-row>
+
+
+
+      </ion-list>
+      <ion-button    color="primary" expand="block">Update Account Details</ion-button>
+
+    </form>
     
    </div>
 </ion-content>
 
 <ion-content *ngIf="isActiveTab=='password'">
-  <div  class="dispplay-content-center">
-    <span>Password</span>
+  <div  class="">
+       <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+        <ion-list class="inputs-list" lines="full">
+    
+    
+          <ion-row>
+              <ion-col class="form-column"   >
+                <label class="form-label"> Current Password</label>
+                  <div class="input-item">
+                    <ion-input type="text" placeholder="Current Password" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                  </div>
+              </ion-col>
+  
+              <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+                <ng-container *ngFor="let validation of validation_messages.title">
+                  <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="form-column"   >
+              <label class="form-label"> New Password</label>
+                <div class="input-item">
+                  <ion-input type="text" placeholder="New Password" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                </div>
+            </ion-col>
+
+            <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+              <ng-container *ngFor="let validation of validation_messages.title">
+                <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="form-column"   >
+            <label class="form-label"> Re-enter New Password</label>
+              <div class="input-item">
+                <ion-input type="text" placeholder="Re-enter New Password" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+              </div>
+          </ion-col>
+
+          <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+            <ng-container *ngFor="let validation of validation_messages.title">
+              <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+      </ion-row>
+
+
+          </ion-list>
+          <ion-button    color="primary" expand="block">Save New Password</ion-button>
+
+          </form>
+     
   </div>
 </ion-content>

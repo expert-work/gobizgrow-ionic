@@ -35,16 +35,20 @@
           <ion-col size="2">
           <ion-buttons><ion-checkbox  (click)="openMenu()"  [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}" (change)="isAllSelected()"></ion-checkbox></ion-buttons>
           </ion-col>
-          <ion-col class="info-col" size="4">
-            <app-text-shell animation="bouncing" lines="3" [data]="item.category.name"></app-text-shell>
-          </ion-col>
-          <ion-col class="info-col" size="4">
+         
+          <ion-col class="info-col" size="8">
+            <app-text-shell animation="bouncing" lines="1" [data]="item.title"></app-text-shell>
             <p class="item-description">
               <app-text-shell animation="bouncing" lines="3" [data]="item.amount| currency"></app-text-shell>
             </p>
+            <p class="item-description">
+              <app-text-shell animation="bouncing" lines="3" [data]="item.category.name"></app-text-shell>
+            </p>
+            
           </ion-col>
+        
           <ion-col size="2">
-            <ion-icon name="options" class="list-item-option" (click)="openOptionMenu(item)"></ion-icon>
+            <ion-icon style="font-size: 20px; margin-top: 10px;" name="chevron-forward" color="primary" (click)="openActionMenu(item)" ></ion-icon>
           </ion-col>
         </ion-row>
       </div>

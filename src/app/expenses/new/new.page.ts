@@ -31,6 +31,10 @@ export class NewPage  {
     'expense_date': [
       { type: 'required', message: 'Date is required.' },
      ],
+     'title': [
+      { type: 'required', message: 'Title is required.' },
+     ],
+
     'amount': [
       { type: 'required', message: 'amount is required.' },
      ],
@@ -59,6 +63,11 @@ export class NewPage  {
       'amount': new FormControl('', Validators.compose([
         Validators.required,
        ])),
+       'title': new FormControl('', Validators.compose([
+        Validators.required,
+       ])),
+
+       
       'expense_date': new FormControl('', Validators.compose([
          Validators.required
        ])),
@@ -85,6 +94,8 @@ export class NewPage  {
      form.append('amount', this.form.value.amount);
      form.append('expense_date', this.form.value.expense_date);
      form.append('notes', this.form.value.notes);
+     form.append('title', this.form.value.title);
+
      form.append('expense_category_id', this.expenses_category.expense_category_id);
 
      

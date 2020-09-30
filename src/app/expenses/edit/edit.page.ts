@@ -31,6 +31,9 @@ export class EditPage implements OnInit {
     'expense_date': [
       { type: 'required', message: 'Date is required.' },
      ],
+    'title': [
+      { type: 'required', message: 'title is required.' },
+     ],
     'amount': [
       { type: 'required', message: 'amount is required.' },
      ],
@@ -64,6 +67,9 @@ export class EditPage implements OnInit {
       'amount': new FormControl(this.data.amount, Validators.compose([
         Validators.required,
        ])),
+       'title': new FormControl(this.data.title, Validators.compose([
+        Validators.required,
+       ])),
       'expense_date': new FormControl(this.data.expense_date, Validators.compose([
          Validators.required
        ])),
@@ -88,6 +94,7 @@ export class EditPage implements OnInit {
      this.desabled=true;
      let form = new FormData();
      form.append('amount', this.form.value.amount);
+     form.append('title', this.form.value.title);
      form.append('expense_date', this.form.value.expense_date);
      form.append('notes', this.form.value.notes);
      form.append('expense_category_id', this.expenses_category.expense_category_id);

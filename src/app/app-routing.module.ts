@@ -26,22 +26,7 @@ const routes: Routes = [
       m => m.SignupStepTwoPageModule
     )
   },
-  {
-    path: 'list',
-    loadChildren: () => import('./jobs/list/list.module').then( m => m.ListPageModule)
-  },
-  {
-    path: 'new',
-    loadChildren: () => import('./jobs/new/new.module').then( m => m.NewPageModule)
-  },
-  {
-    path: 'edit',
-    loadChildren: () => import('./expenses/edit/edit.module').then( m => m.EditPageModule)
-  },
-  {
-    path: 'expense-categories',
-    loadChildren: () => import('./common/expense-categories/expense-categories.module').then( m => m.ExpenseCategoriesPageModule)
-  },
+   
  
   
  

@@ -1,0 +1,353 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button> 
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Company Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  <ion-card-content >
+        <ion-row style="color: #378175;
+        font-size: 16px; max-width: 600px;">
+          <ion-col (click)="updateActiveTab('GENERAL');" style="cursor: pointer;">
+                <span [class]="(isActiveTab=='GENERAL')?'active-tab':''"> GENERAL</span>
+          </ion-col>
+          
+          <ion-col (click)="updateActiveTab('HOURS');" style="cursor: pointer;">
+              <span [class]="(isActiveTab=='HOURS')?'active-tab':''"> HOURS</span>
+          </ion-col>
+          <ion-col (click)="updateActiveTab('SOCIAL');" style="cursor: pointer;">
+            <span [class]="(isActiveTab=='SOCIAL')?'active-tab':''"> SOCIAL</span>
+        </ion-col>
+           
+        </ion-row>
+</ion-card-content>
+</ion-card>
+
+<ion-content *ngIf="isActiveTab=='GENERAL'">
+  <div  class="">
+    <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+      <ion-list class="inputs-list" lines="full">
+  
+  
+        <ion-row>
+            <ion-col class="form-column"   >
+              <label class="form-label"> Company Name</label>
+                <div class="input-item">
+                  <ion-input type="text" placeholder="Company Name" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                </div>
+            </ion-col>
+
+            <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+              <ng-container *ngFor="let validation of validation_messages.title">
+                <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col class="form-column"   >
+            <label class="form-label"> Company Address</label>
+              <div class="input-item">
+                <ion-input type="text" placeholder="Company Address" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+              </div>
+          </ion-col>
+
+          <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+            <ng-container *ngFor="let validation of validation_messages.title">
+              <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col class="form-column"   >
+          <label class="form-label"> City</label>
+            <div class="input-item">
+              <ion-input type="text" placeholder="City" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+            </div>
+        </ion-col>
+
+        <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+          <ng-container *ngFor="let validation of validation_messages.title">
+            <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+    </ion-row>
+
+
+            <ion-row>
+              <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+                <label class="form-label"> State</label>
+                  <div class="input-item">
+                    <ion-input type="text" placeholder="State" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                  </div>
+              
+
+              <div class="error-container" style="width: 100%;margin-top: -5px !important;">
+                <ng-container *ngFor="let validation of validation_messages.title">
+                  <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+            </ion-col>
+
+            <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+              <label class="form-label"> Zip</label>
+                <div class="input-item">
+                  <ion-input type="text" placeholder="Zip" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                </div>
+            
+
+            <div class="error-container" style="width: 100%;margin-top: -5px !important;">
+              <ng-container *ngFor="let validation of validation_messages.title">
+                <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+
+
+            <ion-row>
+              <ion-col class="form-column"   >
+                <label class="form-label"> Logo</label>
+                  <div class="input-item" (click)="openUploadModal('')" >
+                    <ion-icon name="camera-outline"  style="    padding: 5px;
+                    font-size: 30px;"></ion-icon>
+                  </div>
+              </ion-col>
+
+              <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+                <ng-container *ngFor="let validation of validation_messages.title">
+                  <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+            </ion-row>
+
+
+            <ion-row>
+              <ion-col class="form-column"   >
+                <label class="form-label"> About You</label>
+                  <div class="input-item">
+                    <ion-textarea   formControlName="title" clearInput autocapitalize="off"   placeholder="Enter About You..."></ion-textarea>
+                  </div>
+              </ion-col>
+
+              <div class="error-container" style="width: 100%;margin-top: -15px !important;">
+                <ng-container *ngFor="let validation of validation_messages.title">
+                  <div class="error-message" *ngIf="form.get('title').hasError(validation.type) && (form.get('title').dirty || form.get('title').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+            </ion-row>
+ 
+
+      </ion-list>
+      <ion-button    color="primary" expand="block">Update Account Details</ion-button>
+
+    </form>
+    
+   </div>
+</ion-content>
+
+
+
+<ion-content *ngIf="isActiveTab=='HOURS'">
+  <div  class="">
+    <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+      <ion-list class="inputs-list" lines="full">
+        <ion-row>
+            <label class="form-label"> Monday</label>
+            <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+              <div class="input-item">
+                <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+              </div>
+            </ion-col>
+            <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+              <div class="input-item">
+                <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+              </div>
+            </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <label class="form-label"> Tuesday</label>
+          <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+            <div class="input-item">
+              <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+            </div>
+          </ion-col>
+          <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+            <div class="input-item">
+              <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+            </div>
+          </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <label class="form-label"> Wednesday</label>
+        <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+          <div class="input-item">
+            <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+          </div>
+        </ion-col>
+        <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+          <div class="input-item">
+            <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+          </div>
+        </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <label class="form-label"> Thursday</label>
+      <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+        <div class="input-item">
+          <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+        </div>
+      </ion-col>
+      <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+        <div class="input-item">
+          <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+        </div>
+      </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <label class="form-label"> Friday</label>
+    <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+      <div class="input-item">
+        <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+      </div>
+    </ion-col>
+    <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+      <div class="input-item">
+        <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+      </div>
+    </ion-col>
+</ion-row>
+
+
+<ion-row>
+  <label class="form-label"> Saturday</label>
+  <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+    <div class="input-item">
+      <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+    </div>
+  </ion-col>
+  <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+    <div class="input-item">
+      <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+    </div>
+  </ion-col>
+</ion-row>
+
+
+<ion-row>
+  <label class="form-label"> Sunday</label>
+  <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+    <div class="input-item">
+      <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+    </div>
+  </ion-col>
+  <ion-col class="form-column"  sizeLg="6" sizeMd="6" sizeXs="6"  >
+    <div class="input-item">
+      <ion-datetime  style="width: 100%;"  displayFormat="hh:mm A"       display-timezone="utc"></ion-datetime>
+    </div>
+  </ion-col>
+</ion-row>
+
+
+      </ion-list>
+      <ion-button    color="primary" expand="block">Update  Details</ion-button>
+    </form>
+  </div>
+</ion-content>
+
+
+
+<ion-content *ngIf="isActiveTab=='SOCIAL'">
+  <div  class="">
+    <form [formGroup]="form" (ngSubmit)="saveForm()" class="forms">
+      <ion-list class="inputs-list" lines="full">
+        <ion-row>
+          <ion-col class="form-column"   >
+            <label class="form-label"> Google Business Page</label>
+              <div class="input-item">
+                <ion-input type="text" placeholder="Google Business Page" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+              </div>
+          </ion-col>
+      </ion-row>
+
+                <ion-row>
+                  <ion-col class="form-column"   >
+                    <label class="form-label"> Yelp Page</label>
+                      <div class="input-item">
+                        <ion-input type="text" placeholder="Yelp Page" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                      </div>
+                  </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col class="form-column"   >
+                  <label class="form-label"> Business Website</label>
+                    <div class="input-item">
+                      <ion-input type="text" placeholder="Business Website" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col class="form-column"   >
+                <label class="form-label"> Twitter </label>
+                  <div class="input-item">
+                    <ion-input type="text" placeholder="Twitter " formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                  </div>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col class="form-column"   >
+              <label class="form-label">Instagram</label>
+                <div class="input-item">
+                  <ion-input type="text" placeholder="Instagram" formControlName="title" clearInput autocapitalize="off" ></ion-input>
+                </div>
+            </ion-col>
+          </ion-row>
+
+      </ion-list>
+      <ion-button    color="primary" expand="block">Update  Details</ion-button>
+
+    </form>
+  </div>
+</ion-content>
